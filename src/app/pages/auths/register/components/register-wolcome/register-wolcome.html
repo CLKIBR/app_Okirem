@@ -1,0 +1,21 @@
+<section class="flex justify-center items-center min-h-[90vh] bg-white">
+  <div class="flex gap-16 items-center justify-center w-full h-full">
+    <div *ngFor="let card of roleCards" class="relative w-[340px] h-[400px] flex flex-col items-center cursor-pointer" (click)="selectRole(card.role)">
+      <!-- Gölge Arka Plan (Gradient) -->
+      <div class="absolute left-1/2 top-1/2 w-[320px] h-[380px] -translate-x-1/2 -translate-y-1/2 rotate-6 rounded-[2.5rem] shadow-2xl" [ngClass]="'bg-gradient-to-br ' + card.gradient"></div>
+      <!-- İç Kart -->
+      <div class="absolute left-1/2 top-1/2 w-[320px] h-[380px] -translate-x-1/2 -translate-y-1/2 rotate-6 space-y-8 rounded-[2.5rem] bg-white p-12 transition duration-300 hover:scale-105 hover:rotate-0 flex flex-col justify-between shadow-2xl">
+        <div class="flex justify-end">
+          <div class="h-8 w-8 rounded-full bg-indigo-700"></div>
+        </div>
+        <header class="flex items-center justify-center gap-4 text-center text-6xl font-extrabold text-indigo-400">
+          <iconify-icon [icon]="card.icon" width="120" height="120" [style.color]="getIconColor(card.gradient)"></iconify-icon>
+        </header>
+        <div>
+          <p class="text-center text-4xl font-extrabold text-gray-800">{{ card.title }}</p>
+          <p class="text-center text-base font-medium text-indigo-600 break-words">{{ card.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

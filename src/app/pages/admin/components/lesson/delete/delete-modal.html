@@ -1,0 +1,8 @@
+<div class="modal" (click)="close.emit()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h3>Ders Sil</h3>
+    <p>Dersi silmek istediğinize emin misiniz?</p>
+    <button (click)="deleteLesson()">Sil</button>
+    <button (click)="close.emit()">Kapat</button>
+  </div>
+</div>

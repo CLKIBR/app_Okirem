@@ -1,0 +1,48 @@
+.lesson-admin {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+/* Kart hover efektleri */
+.group:hover .absolute {
+  transform: rotate(2deg);
+}
+
+.group:hover .relative {
+  transform: rotate(-1deg);
+}
+
+/* Responsive grid ayarları */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+/* Form stilleri (modal içinde kullanım için) */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 2rem auto;
+}
+
+input, button {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+button {
+  background: linear-gradient(90deg, #6366f1, #3b82f6);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}

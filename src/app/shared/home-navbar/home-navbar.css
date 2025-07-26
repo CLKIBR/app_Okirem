@@ -1,0 +1,80 @@
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.7rem;
+  font-weight: bold;
+  margin-right: 2.5rem;
+  background: linear-gradient(90deg, #6366f1 0%, #d946ef 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+.logo-icon {
+  margin-right: 0.2rem;
+  vertical-align: middle;
+  font-size: 2rem;
+  transition: transform 0.2s;
+  background: linear-gradient(90deg, #6366f1 0%, #d946ef 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+.logo:hover .logo-icon {
+  animation: rocket-bounce 1.2s infinite alternate;
+}
+@keyframes rocket-bounce {
+  0% { transform: translateY(0) scale(1); }
+  60% { transform: translateY(-8px) scale(1.08); }
+  100% { transform: translateY(-16px) scale(1.15); }
+}
+.home-navbar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  color: #232323;
+  padding: 1.5rem 4rem;
+  box-shadow: 0 6px 24px 0 rgba(60,72,120,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.logo {
+  font-size: 1.7rem;
+  font-weight: bold;
+  margin-right: 2.5rem;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+}
+.nav-links a {
+  color: #232323;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover {
+  color: #6366f1;
+}
+.admin-login-btn {
+  background: none;
+  color: #d1d5db;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 2.2rem;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: auto;
+  box-shadow: none;
+  transition: color 0.2s;
+}
+.admin-login-btn:hover {
+  color: #9ca3af;
+}

@@ -1,0 +1,14 @@
+<div class="modal" (click)="close.emit()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h3>Ders Ekle</h3>
+    <form [formGroup]="lessonForm" (ngSubmit)="addLesson()">
+      <input formControlName="title" placeholder="Ders Başlığı" />
+      <input formControlName="date" type="date" placeholder="Tarih" />
+      <input formControlName="duration" type="number" placeholder="Süre (dk)" />
+      <input formControlName="icon" placeholder="İkon" />
+      <input formControlName="gradient" placeholder="Gradient" />
+      <button type="submit">Ekle</button>
+      <button type="button" (click)="close.emit()">Kapat</button>
+    </form>
+  </div>
+</div>
