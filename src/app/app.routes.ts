@@ -7,6 +7,7 @@ import { Register } from './pages/auths/register/register';
 import { registerRoutes } from './pages/auths/register/register.router';
 import { authGuard } from './core/guards/auth.guard';
 import { Home } from './pages/student/components/home/home';
+import { ParentComponent, parentRoutes, TeacherComponent, teacherRoutes } from './pages';
 
 export const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
@@ -18,9 +19,15 @@ export const routes: Routes = [
   //Student
   {path:'student',component:StudentComponent,children:studentRoutes,canActivate: [authGuard]},
 
+  //Student
+  {path:'student',component:StudentComponent,children:studentRoutes,canActivate: [authGuard]},
 
+  //Teacher
+  {path:'teacher',component:TeacherComponent,children:teacherRoutes,canActivate: [authGuard]},
 
-  
+  //Parent
+  {path:'parent',component:ParentComponent,children:parentRoutes,canActivate: [authGuard]},
+
   {path:'register',component:Register,children:registerRoutes},
   
   {

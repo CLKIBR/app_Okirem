@@ -19,9 +19,12 @@ export class HomeNavbar {
     this.router.navigate(['/admin']);
   }
 
-  async closeLogin() {
-    await this.authService.logout();
-    this.router.navigate(['/home']);
+  login(event?: Event) {
+    if (event) event.preventDefault();
+    this.router.navigate(['/register/wolcome']);
+  }
+  goToLogin() {
+    this.router.navigate(['/login']);
   }
 }
 

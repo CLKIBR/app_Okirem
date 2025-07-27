@@ -1,6 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeNavbar } from '../../../../shared/home-navbar/home-navbar';
 import { Router } from '@angular/router';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { LessonService } from '../../../../core/services/lesson.service';
@@ -9,15 +8,13 @@ import 'iconify-icon';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HomeNavbar],
+  imports: [CommonModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class Home implements OnInit {
-  goToLogin() {
-    this.router.navigate(['/login']);
-  }
+  
   router = inject(Router);
   lessonService = inject(LessonService);
   lessonCards: (any & { id: string })[] = [];
@@ -60,10 +57,7 @@ export class Home implements OnInit {
     });
   }
 
-  login(event?: Event) {
-    if (event) event.preventDefault();
-    this.router.navigate(['/register/wolcome']);
-  }
+  
 
   goToSignup() {
     console.log('Signup button clicked');
@@ -77,5 +71,13 @@ export class Home implements OnInit {
     if (gradient.includes('yellow') || gradient.includes('amber') || gradient.includes('orange')) return '#f59e42';
     if (gradient.includes('blue') || gradient.includes('sky') || gradient.includes('cyan') || gradient.includes('purple')) return '#3b82f6';
     return '#6366f1';
+  }
+
+  login(event?: Event) {
+    if (event) event.preventDefault();
+    this.router.navigate(['/register/wolcome']);
+  }
+  goToLogin() {
+    this.router.navigate(['/login']);
   }
 }
