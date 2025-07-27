@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth.service';
 import { Router } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
@@ -15,6 +16,36 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class Login {
+  private async navigateByRole(uid: string | undefined) {
+  console.log('[NavigateByRole] UID:', uid);
+
+  if (!uid) {
+    console.warn('[NavigateByRole] UID boş, dashboarda yönlendiriliyor...');
+    await this.router.navigate(['/dashboard']);
+    return;
+  }
+
+  const role = await firstValueFrom(this.authService.getUserRole$(uid));
+  console.log('[NavigateByRole] Kullanıcı rolü:', role);
+
+  if (role === 'admin') {
+    console.log('[NavigateByRole] → /admin');
+    await this.router.navigate(['/admin']);
+  } else if (role === 'student') {
+    console.log('[NavigateByRole] → /student');
+    await this.router.navigate(['/student']);
+  } else if (role === 'teacher') {
+    console.log('[NavigateByRole] → /teacher');
+    await this.router.navigate(['/teacher']);
+  } else if (role === 'parent') {
+    console.log('[NavigateByRole] → /parent');
+    await this.router.navigate(['/parent']);
+  } else {
+    console.warn('[NavigateByRole] Rol bulunamadı, ana sayfaya yönlendiriliyor.');
+    await this.router.navigate(['/']);
+  }
+}
+
   closeLogin() {
     this.router.navigate(['/']);
   }
@@ -37,7 +68,9 @@ export class Login {
     const { email, password } = this.form.value;
     try {
       await this.authService.loginWithEmail(email!, password!);
-      await this.router.navigate(['/dashboard']);
+      // Kullanıcı rolüne göre yönlendir
+      const currentUser = this.authService.currentUser;
+      await this.navigateByRole(currentUser?.uid);
     } catch (err: any) {
       switch (err.code) {
         case 'auth/user-not-found':
@@ -68,7 +101,9 @@ export class Login {
     this.errorMessage = '';
     try {
       await this.authService.loginWithGoogle();
-      await this.router.navigate(['/dashboard']);
+      // Kullanıcı rolüne göre yönlendir
+      const currentUser = this.authService.currentUser;
+      await this.navigateByRole(currentUser?.uid);
     } catch (err: any) {
       this.errorMessage = err.message || 'Google ile giriş başarısız.';
     } finally {

@@ -1,22 +1,39 @@
 import { Injectable, inject } from '@angular/core';
-import { Auth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut, user, createUserWithEmailAndPassword } from '@angular/fire/auth';
-import { Observable } from 'rxjs';
+import {
+  Auth,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+  signOut,
+  user,
+  createUserWithEmailAndPassword,
+  User,
+  authState,
+} from '@angular/fire/auth';
+import { from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-  
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private auth = inject(Auth);
+  public user$: Observable<User | null> = authState(this.auth);
 
-  async getUserRole(uid: string): Promise<string | null> {
-    const { getFirestore, doc, getDoc } = await import('firebase/firestore');
-    const db = getFirestore();
-    const userDoc = await getDoc(doc(db, 'users', uid));
-    return userDoc.exists() ? userDoc.data()['role'] : null;
+  getUserRole$(uid: string): Observable<string | null> {
+    return from(
+      import('firebase/firestore').then(
+        async ({ getFirestore, doc, getDoc }) => {
+          const db = getFirestore();
+          const userDoc = await getDoc(doc(db, 'users', uid));
+          return userDoc.exists() ? userDoc.data()['role'] : null;
+        }
+      )
+    );
   }
 
   loginWithEmail(email: string, password: string): Promise<void> {
-    return signInWithEmailAndPassword(this.auth, email, password).then(() => {});
+    return signInWithEmailAndPassword(this.auth, email, password).then(
+      () => {}
+    );
   }
 
   loginWithGoogle(): Promise<void> {
@@ -24,7 +41,7 @@ export class AuthService {
   }
 
   isLoggedIn(): Observable<boolean> {
-    return user(this.auth).pipe(map(u => !!u));
+    return user(this.auth).pipe(map((u) => !!u));
   }
 
   logout(): Promise<void> {
@@ -35,8 +52,16 @@ export class AuthService {
     return this.auth.currentUser;
   }
 
-  async registerWithEmail(email: string, password: string, extraData?: any): Promise<void> {
-    const cred = await createUserWithEmailAndPassword(this.auth, email, password);
+  async registerWithEmail(
+    email: string,
+    password: string,
+    extraData?: any
+  ): Promise<void> {
+    const cred = await createUserWithEmailAndPassword(
+      this.auth,
+      email,
+      password
+    );
     if (extraData) {
       // Firestore'a kullanıcı ekle
       const { getFirestore, doc, setDoc } = await import('firebase/firestore');
@@ -44,7 +69,7 @@ export class AuthService {
       await setDoc(doc(db, 'users', cred.user.uid), {
         email,
         role: extraData.role,
-        ...extraData
+        ...extraData,
       });
     }
   }

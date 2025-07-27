@@ -1,6 +1,7 @@
 import { Routes } from "@angular/router";
-import { Home } from "./components";
+import { Home, StudentDashboardComponent } from "./components";
 
 export const studentRoutes: Routes = [
-    { path: 'home', component: Home },
+    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+    { path: 'dashboard', component: StudentDashboardComponent }
 ]

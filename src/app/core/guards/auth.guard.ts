@@ -1,21 +1,49 @@
 import { inject } from '@angular/core';
-import { CanActivateFn } from '@angular/router';
+import { CanActivateFn, Router, ActivatedRouteSnapshot } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
-import { map, tap } from 'rxjs/operators';
+import { from, map, switchMap, take, tap, of } from 'rxjs';
 
-export const authGuard: CanActivateFn = async () => {
+export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot) => {
   const authService = inject(AuthService);
   const router = inject(Router);
-  const user = authService.currentUser;
-  if (!user) {
-    router.navigate(['/login']);
-    return false;
-  }
-  const role = await authService.getUserRole(user.uid);
-  if (role !== 'admin') {
-    router.navigate(['/admin/dashboard']);
-    return false;
-  }
-  return true;
+
+  return authService.user$.pipe(
+    take(1),
+    switchMap((user) => {
+      if (!user) {
+        console.warn('[AuthGuard] Kullanıcı yok → /login');
+        router.navigate(['/login']);
+        return of(false);
+      }
+
+      return authService.getUserRole$(user.uid).pipe(
+        map((role) => {
+          console.log('[AuthGuard] Kullanıcı rolü:', role);
+          const requestedPath = '/' + route.routeConfig?.path;
+
+          // Eğer doğru route'taysa → geçişe izin ver
+          if (
+            (role === 'admin' && requestedPath.startsWith('/admin')) ||
+            (role === 'student' && requestedPath.startsWith('/student')) ||
+            (role === 'teacher' && requestedPath.startsWith('/teacher')) ||
+            (role === 'parent' && requestedPath.startsWith('/parent'))
+          ) {
+            console.log('[AuthGuard] Kullanıcı doğru rolde, geçişe izin veriliyor.');
+            return true;
+          }
+
+          // Değilse uygun sayfaya yönlendir
+          const redirectPath =
+            role === 'admin' ? '/admin' :
+            role === 'student' ? '/student' :
+            role === 'teacher' ? '/teacher' :
+            role === 'parent' ? '/parent' : '/';
+
+          console.warn('[AuthGuard] Uygun sayfaya yönlendir:', redirectPath);
+          router.navigate([redirectPath]);
+          return false;
+        })
+      );
+    })
+  );
 };
