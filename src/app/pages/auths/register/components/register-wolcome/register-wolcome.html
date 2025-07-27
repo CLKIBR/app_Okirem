@@ -2,7 +2,7 @@
   <div class="flex gap-16 items-center justify-center w-full h-full">
     <div *ngFor="let card of roleCards" class="relative w-[340px] h-[400px] flex flex-col items-center cursor-pointer" (click)="selectRole(card.role)">
       <!-- Gölge Arka Plan (Gradient) -->
-      <div class="absolute left-1/2 top-1/2 w-[320px] h-[380px] -translate-x-1/2 -translate-y-1/2 rotate-6 rounded-[2.5rem] shadow-2xl" [ngClass]="'bg-gradient-to-br ' + card.gradient"></div>
+      <div class="absolute left-1/2 top-1/2 w-[325px] h-[385px] -translate-x-1/2 -translate-y-1/2 rotate-6 rounded-[2.5rem] shadow-2xl" [ngClass]="'bg-gradient-to-br ' + card.gradient"></div>
       <!-- İç Kart -->
       <div class="absolute left-1/2 top-1/2 w-[320px] h-[380px] -translate-x-1/2 -translate-y-1/2 rotate-6 space-y-8 rounded-[2.5rem] bg-white p-12 transition duration-300 hover:scale-105 hover:rotate-0 flex flex-col justify-between shadow-2xl">
         <div class="flex justify-end">

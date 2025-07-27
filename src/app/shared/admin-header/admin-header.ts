@@ -1,3 +1,5 @@
+import { AuthService } from '../../core/services/auth.service';
+import { Router } from '@angular/router';
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
@@ -30,6 +32,13 @@ import { IconDirective } from '@coreui/icons-angular';
   imports: [ContainerComponent, HeaderTogglerDirective, SidebarToggleDirective, IconDirective, HeaderNavComponent, NavItemComponent, NavLinkDirective, RouterLink, RouterLinkActive, NgTemplateOutlet, BreadcrumbRouterComponent, DropdownComponent, DropdownToggleDirective, AvatarComponent, DropdownMenuDirective, DropdownHeaderDirective, DropdownItemDirective, BadgeComponent, DropdownDividerDirective]
 })
 export class AdminHeader extends HeaderComponent {
+  private authService = inject(AuthService);
+  private router = inject(Router);
+
+  async logout() {
+    await this.authService.logout();
+    this.router.navigate(['/home']);
+  }
 
   readonly #colorModeService = inject(ColorModeService);
   readonly colorMode = this.#colorModeService.colorMode;

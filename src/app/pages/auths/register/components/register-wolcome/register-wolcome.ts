@@ -46,11 +46,11 @@ export class RegisterWolcome {
 
   selectRole(role: string) {
     if (role === 'student') {
-      this.router.navigate(['/register/class']);
+      this.router.navigate(['/register/student']);
     } else if (role === 'teacher') {
-      this.router.navigate(['/register/teacher-profile']);
+      this.router.navigate(['/register/teacher']);
     } else if (role === 'parent') {
-      this.router.navigate(['/register/parent-connect']);
+      this.router.navigate(['/register/parent']);
     }
   }
 }

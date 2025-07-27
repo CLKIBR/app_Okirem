@@ -15,6 +15,9 @@ import 'iconify-icon';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class Home implements OnInit {
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
   router = inject(Router);
   lessonService = inject(LessonService);
   lessonCards: (any & { id: string })[] = [];

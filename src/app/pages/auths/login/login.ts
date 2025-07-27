@@ -1,11 +1,82 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../../../core/services/auth.service';
+import { Router } from '@angular/router';
+
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @Component({
   selector: 'app-login',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './login.html',
-  styleUrl: './login.css'
+  styleUrl: './login.css',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class Login {
+  closeLogin() {
+    this.router.navigate(['/']);
+  }
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  private fb = inject(FormBuilder);
 
+  form = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+  });
+
+  errorMessage = '';
+  isLoading = false;
+
+  async loginWithEmail() {
+    if (this.form.invalid) return;
+    this.isLoading = true;
+    this.errorMessage = '';
+    const { email, password } = this.form.value;
+    try {
+      await this.authService.loginWithEmail(email!, password!);
+      await this.router.navigate(['/dashboard']);
+    } catch (err: any) {
+      switch (err.code) {
+        case 'auth/user-not-found':
+          this.errorMessage = 'Kullanıcı bulunamadı. Lütfen kayıt olun.';
+          break;
+        case 'auth/wrong-password':
+          this.errorMessage = 'Şifreniz yanlış, lütfen tekrar deneyin.';
+          break;
+        case 'auth/invalid-email':
+          this.errorMessage = 'Geçersiz e-posta adresi.';
+          break;
+        case 'auth/invalid-credential':
+          this.errorMessage = 'E-posta veya şifre hatalı, lütfen tekrar deneyin.';
+          break;
+        case 'auth/user-disabled':
+          this.errorMessage = 'Bu kullanıcı hesabı devre dışı bırakılmış.';
+          break;
+        default:
+          this.errorMessage = 'Giriş başarısız: ' + (err.message || 'Bilinmeyen hata.');
+      }
+    } finally {
+      this.isLoading = false;
+    }
+  }
+
+  async loginWithGoogle() {
+    this.isLoading = true;
+    this.errorMessage = '';
+    try {
+      await this.authService.loginWithGoogle();
+      await this.router.navigate(['/dashboard']);
+    } catch (err: any) {
+      this.errorMessage = err.message || 'Google ile giriş başarısız.';
+    } finally {
+      this.isLoading = false;
+    }
+  }
+
+  goToRegister() {
+  this.router.navigate(['/register/wolcome']);
+}
 }
