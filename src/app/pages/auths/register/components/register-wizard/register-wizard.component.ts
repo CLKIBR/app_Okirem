@@ -1,17 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { RegistrationService, WizardStep, UserRole } from '../../../../../core';
 import { Firestore, doc, setDoc } from '@angular/fire/firestore';
 import { Auth } from '@angular/fire/auth';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-wizard',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './register-wizard.component.html',
+  templateUrl:   './register-wizard.component.html',
   styleUrls: ['./register-wizard.component.scss']
 })
 export class RegisterWizardComponent implements OnInit {
@@ -35,7 +34,7 @@ export class RegisterWizardComponent implements OnInit {
 
     const group: any = {};
     for (const step of this.steps) {
-      group[step.field] = ['']; // basit setup, validasyon sonra eklenecek
+      group[step.field] = [''];
     }
 
     this.form = this.fb.group(group);
@@ -66,15 +65,25 @@ export class RegisterWizardComponent implements OnInit {
         const user = this.auth.currentUser;
         if (!user) throw new Error('Kullanıcı oturumu yok!');
         const uid = user.uid;
+
         const data = {
           ...this.form.value,
           role: this.role,
           createdAt: new Date().toISOString()
         };
+
         const ref = doc(this.firestore, `users/${uid}/user-profile`);
         await setDoc(ref, data);
+
         console.log('✅ Firestore kaydı başarılı:', data);
-        this.router.navigate(['/dashboard']);
+
+        // 🔁 Role'a göre yönlendirme
+        let targetRoute = '/dashboard';
+        if (this.role === 'teacher') targetRoute = '/teacher-dashboard';
+        else if (this.role === 'parent') targetRoute = '/parent-dashboard';
+
+        this.router.navigate([targetRoute]);
+
       } catch (err) {
         console.error('❌ Firestore kayıt hatası:', err);
       }
@@ -82,17 +91,17 @@ export class RegisterWizardComponent implements OnInit {
   }
 
   onMultiSelectChange(field: string, event: Event): void {
-  const input = event.target as HTMLInputElement;
-  const selected = this.form.value[field] || [];
+    const input = event.target as HTMLInputElement;
+    const selected = this.form.value[field] || [];
 
-  if (input.checked) {
-    this.form.patchValue({
-      [field]: [...selected, input.value]
-    });
-  } else {
-    this.form.patchValue({
-      [field]: selected.filter((v: string) => v !== input.value)
-    });
+    if (input.checked) {
+      this.form.patchValue({
+        [field]: [...selected, input.value]
+      });
+    } else {
+      this.form.patchValue({
+        [field]: selected.filter((v: string) => v !== input.value)
+      });
+    }
   }
-}
 }

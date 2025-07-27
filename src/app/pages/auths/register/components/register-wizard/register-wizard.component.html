@@ -1,68 +1,90 @@
-<section class="max-w-xl mx-auto mt-10 p-6 bg-white rounded-xl shadow-lg space-y-6">
-  <div class="text-center">
-    <h2 class="text-2xl font-bold text-indigo-600">Kayıt Ol - {{ role | titlecase }}</h2>
-    <p class="text-gray-500">Adım {{ currentStep + 1 }} / {{ steps.length }}</p>
-  </div>
-
-  <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4">
-    <ng-container *ngIf="steps.length > 0">
-      <div class="flex flex-col space-y-2">
-        <label class="text-lg font-medium text-gray-700">
-          {{ steps[currentStep].label }}
-        </label>
-
-        <!-- Text input -->
-        <input *ngIf="steps[currentStep].type === 'text'" 
-               [formControlName]="steps[currentStep].field"
-               type="text"
-               class="p-2 border rounded focus:outline-none focus:ring focus:border-indigo-500" />
-
-        <!-- Select input -->
-        <select *ngIf="steps[currentStep].type === 'select'" 
-                [formControlName]="steps[currentStep].field"
-                class="p-2 border rounded focus:outline-none focus:ring focus:border-indigo-500">
-          <option *ngFor="let opt of steps[currentStep].options" [value]="opt">{{ opt }}</option>
-        </select>
-
-        <!-- Multiselect -->
-        <div *ngIf="steps[currentStep].type === 'multiselect'" class="flex flex-wrap gap-2">
-          <label *ngFor="let opt of steps[currentStep].options" class="flex items-center gap-2">
-            <input type="checkbox"
-                   [value]="opt"
-                   (change)="onMultiSelectChange(steps[currentStep].field, $event)"
-                   [checked]="form.value[steps[currentStep].field]?.includes(opt)" />
-            <span>{{ opt }}</span>
-          </label>
-        </div>
-
-        <!-- Quiz (radio buttons) -->
-        <div *ngIf="steps[currentStep].type === 'quiz'" class="space-y-2">
-          <label *ngFor="let opt of steps[currentStep].options" class="flex items-center gap-2">
-            <input type="radio"
-                   [value]="opt"
-                   [formControlName]="steps[currentStep].field" />
-            <span>{{ opt }}</span>
-          </label>
-        </div>
-      </div>
-    </ng-container>
-
-    <!-- Navigation Buttons -->
-    <div class="flex justify-between pt-6">
-      <button type="button" (click)="prevStep()" [disabled]="currentStep === 0"
-              class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">
-        Geri
-      </button>
-
-      <button type="button" *ngIf="!isLastStep()" (click)="nextStep()"
-              class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">
-        İleri
-      </button>
-
-      <button type="submit" *ngIf="isLastStep()" 
-              class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
-        Kaydı Tamamla
-      </button>
+<div class="min-h-screen bg-gray-100 flex justify-center items-center px-4 sm:px-0">
+  <div class="absolute inset-0 z-10 pointer-events-none">
+    <img src="assets/images/hero.png" alt="Hero" class="absolute left-0 bottom-0 max-h-[70vh] object-contain" />
+    <div *ngIf="steps[currentStep]?.message"
+      class="absolute left-[440px] bottom-[190px] bg-white rounded-2xl shadow-lg px-4 py-2 max-w-xs text-gray-800 text-lg font-bold leading-snug border border-indigo-300">
+      {{ steps[currentStep].message }}
     </div>
-  </form>
-</section>
+  </div>
+  <div class="relative py-3 sm:max-w-xl sm:mx-auto w-full">
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-indigo-400 to-fuchsia-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+    </div>
+
+    <div class="relative px-6 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-16">
+      <div class="max-w-md mx-auto w-full">
+        <div class="text-center mb-6">
+
+
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-8">
+          <ng-container *ngIf="steps.length > 0">
+            <div class="relative">
+              <!-- Dynamic Input -->
+              <ng-container [ngSwitch]="steps[currentStep].type">
+                <!-- TEXT -->
+                <div *ngSwitchCase="'text'">
+                  <input type="text" [formControlName]="steps[currentStep].field"
+                    placeholder="{{ steps[currentStep].label }}"
+                    class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 text-4xl font-bold focus:outline-none focus:border-indigo-500" />
+                  <label class="absolute left-0 -top-3.5 text-gray-600 text-sm
+                                 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400
+                                 peer-placeholder-shown:top-2 transition-all
+                                 peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+                    {{ steps[currentStep].label }}
+                  </label>
+                </div>
+
+                <!-- SELECT -->
+                <div *ngSwitchCase="'select'">
+                  <select [formControlName]="steps[currentStep].field"
+                    class="w-full border-b-2 border-gray-300 h-10 text-gray-700 focus:outline-none focus:border-indigo-500">
+                    <option disabled selected>{{ steps[currentStep].label }}</option>
+                    <option *ngFor="let opt of steps[currentStep].options" [value]="opt">{{ opt }}</option>
+                  </select>
+                </div>
+
+                <!-- MULTISELECT -->
+                <div *ngSwitchCase="'multiselect'" class="flex flex-wrap gap-2">
+                  <label *ngFor="let opt of steps[currentStep].options" class="flex items-center gap-2">
+                    <input type="checkbox" [value]="opt"
+                      (change)="onMultiSelectChange(steps[currentStep].field, $event)"
+                      [checked]="form.value[steps[currentStep].field]?.includes(opt)" />
+                    <span class="text-gray-700">{{ opt }}</span>
+                  </label>
+                </div>
+
+                <!-- QUIZ -->
+                <div *ngSwitchCase="'quiz'" class="space-y-2">
+                  <label *ngFor="let opt of steps[currentStep].options" class="flex items-center gap-2">
+                    <input type="radio" [formControlName]="steps[currentStep].field" [value]="opt" />
+                    <span>{{ opt }}</span>
+                  </label>
+                </div>
+              </ng-container>
+            </div>
+          </ng-container>
+
+          <!-- Butonlar -->
+          <div class="flex justify-between">
+            <button type="button" (click)="prevStep()" [disabled]="currentStep === 0"
+              class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">
+              Geri
+            </button>
+
+            <button type="button" *ngIf="!isLastStep()" (click)="nextStep()"
+              class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">
+              İleri
+            </button>
+
+            <button type="submit" *ngIf="isLastStep()"
+              class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+              Kaydı Tamamla
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
