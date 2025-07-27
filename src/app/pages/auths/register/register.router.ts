@@ -1,14 +1,13 @@
 import { Routes } from '@angular/router';
-import {
-  RegisterParent,
-  RegisterStudent,
-  RegisterTeacher,
-  RegisterWolcome,
-} from './components';
+import { RegisterWolcome } from './components';
 
 export const registerRoutes: Routes = [
   { path: 'wolcome', component: RegisterWolcome },
-  { path: 'student', component: RegisterStudent },
-  { path: 'teacher', component: RegisterTeacher },
-  { path: 'parent', component: RegisterParent },
+  {
+    path: 'wizard',
+    loadComponent: () =>
+      import('./components/register-wizard/register-wizard.component').then(
+        (m) => m.RegisterWizardComponent
+      ),
+  },
 ];

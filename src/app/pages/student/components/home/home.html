@@ -1,23 +1,32 @@
-<section class="dark:bg-gray-100 dark:text-gray-800">
-    <div
-        class="container mx-auto flex flex-col items-center px-4 py-16 text-center md:py-32 md:px-10 lg:px-32 xl:max-w-3xl">
-        <h1 class="text-4xl font-bold leading-none sm:text-7xl">
-            Günlük görevlerle <span class="dark:text-violet-600">öğrenmeyi oyunlaştır</span> ve gelişimini keşfet
-        </h1>
-        <p class="px-8 mt-8 mb-12 text-lg">
-            Küçük adımlarla büyük başarılar için hazır mısın? Okirem ile dersler eğlenceye, öğrenme deneyime dönüşür.
-        </p>
-        <div class="flex flex-wrap justify-center">
-            <button (click)="login($event)"
-                class="px-8 py-3 m-2 text-lg font-semibold rounded dark:bg-violet-600 dark:text-gray-50">Başla</button>
-            <button (click)="goToLogin()"
-                class="px-8 py-3 m-2 text-lg border rounded dark:text-gray-900 dark:border-gray-300">Hesabım
-                Var</button>
-        </div>
+<section class="relative h-screen overflow-hidden dark:bg-gray-100 dark:text-gray-800">
+  <div class="relative z-20 container mx-auto flex flex-col items-center px-4 py-12 text-center md:py-24 md:px-10 lg:px-32 xl:max-w-3xl">
+    <h1 class="text-4xl font-bold leading-none sm:text-7xl">
+      Günlük görevlerle <span class="dark:text-violet-600">öğrenmeyi oyunlaştır</span> ve gelişimini keşfet
+    </h1>
+    <p class="px-8 mt-8 mb-12 text-lg">
+      Küçük adımlarla büyük başarılar için hazır mısın? Okirem ile dersler eğlenceye, öğrenme deneyime dönüşür.
+    </p>
+    <div class="flex flex-wrap justify-center">
+      <button (click)="login($event)"
+        class="px-8 py-3 m-2 text-lg font-semibold rounded dark:bg-violet-600 dark:text-gray-50">Başla</button>
+      <button (click)="goToLogin()"
+        class="px-8 py-3 m-2 text-lg border rounded dark:text-gray-900 dark:border-gray-300">Hesabım
+        Var</button>
     </div>
+  </div>
 
-    <div class="flex gap-6 min-w-fit items-end absolute left-0 bottom-0 w-full justify-center pb-12">
-      <div *ngFor="let card of lessonCards" class="relative w-[120px] h-[135px] flex flex-col items-center">
+  <!-- Arka Plan Karakter Görselleri -->
+  <div class="absolute inset-0 z-10 pointer-events-none">
+    <img src="assets/images/hero.png" alt="Hero"
+      class="absolute left-0 bottom-0 max-h-[70vh] object-contain" />
+    <img src="assets/images/hero2.png" alt="Hero2"
+      class="absolute right-0 bottom-0 max-h-[70vh] object-contain" />
+  </div>
+
+  <!-- Kartlar -->
+  <div class="relative z-20 flex gap-6 min-w-fit items-end justify-center pb-4 mt-4">
+    <ng-container *ngFor="let card of lessonCards">
+      <div class="relative w-[120px] h-[135px] flex flex-col items-center">
         <!-- Gölge Arka Plan (Gradient) -->
         <div class="absolute left-1/2 top-1/2 w-32 h-40 -translate-x-1/2 -translate-y-1/2 rotate-6 rounded-2xl shadow-lg"
           [ngClass]="'bg-gradient-to-br ' + card.gradient"></div>
@@ -28,8 +37,7 @@
           <div class="flex justify-end">
             <div class="h-2 w-2 rounded-full bg-indigo-700"></div>
           </div>
-          <header
-            class="flex items-center justify-center gap-2 text-center text-[12px] font-extrabold text-indigo-400">
+          <header class="flex items-center justify-center gap-2 text-center text-[12px] font-extrabold text-indigo-400">
             <iconify-icon [icon]="card.icon" width="40" height="40"
               [style.color]="getIconColor(card.gradient)"></iconify-icon>
           </header>
@@ -43,4 +51,6 @@
           </div>
         </div>
       </div>
-    </div>
+    </ng-container>
+  </div>
+</section>

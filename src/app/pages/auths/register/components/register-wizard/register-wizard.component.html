@@ -1,0 +1,68 @@
+<section class="max-w-xl mx-auto mt-10 p-6 bg-white rounded-xl shadow-lg space-y-6">
+  <div class="text-center">
+    <h2 class="text-2xl font-bold text-indigo-600">Kayıt Ol - {{ role | titlecase }}</h2>
+    <p class="text-gray-500">Adım {{ currentStep + 1 }} / {{ steps.length }}</p>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4">
+    <ng-container *ngIf="steps.length > 0">
+      <div class="flex flex-col space-y-2">
+        <label class="text-lg font-medium text-gray-700">
+          {{ steps[currentStep].label }}
+        </label>
+
+        <!-- Text input -->
+        <input *ngIf="steps[currentStep].type === 'text'" 
+               [formControlName]="steps[currentStep].field"
+               type="text"
+               class="p-2 border rounded focus:outline-none focus:ring focus:border-indigo-500" />
+
+        <!-- Select input -->
+        <select *ngIf="steps[currentStep].type === 'select'" 
+                [formControlName]="steps[currentStep].field"
+                class="p-2 border rounded focus:outline-none focus:ring focus:border-indigo-500">
+          <option *ngFor="let opt of steps[currentStep].options" [value]="opt">{{ opt }}</option>
+        </select>
+
+        <!-- Multiselect -->
+        <div *ngIf="steps[currentStep].type === 'multiselect'" class="flex flex-wrap gap-2">
+          <label *ngFor="let opt of steps[currentStep].options" class="flex items-center gap-2">
+            <input type="checkbox"
+                   [value]="opt"
+                   (change)="onMultiSelectChange(steps[currentStep].field, $event)"
+                   [checked]="form.value[steps[currentStep].field]?.includes(opt)" />
+            <span>{{ opt }}</span>
+          </label>
+        </div>
+
+        <!-- Quiz (radio buttons) -->
+        <div *ngIf="steps[currentStep].type === 'quiz'" class="space-y-2">
+          <label *ngFor="let opt of steps[currentStep].options" class="flex items-center gap-2">
+            <input type="radio"
+                   [value]="opt"
+                   [formControlName]="steps[currentStep].field" />
+            <span>{{ opt }}</span>
+          </label>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- Navigation Buttons -->
+    <div class="flex justify-between pt-6">
+      <button type="button" (click)="prevStep()" [disabled]="currentStep === 0"
+              class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">
+        Geri
+      </button>
+
+      <button type="button" *ngIf="!isLastStep()" (click)="nextStep()"
+              class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">
+        İleri
+      </button>
+
+      <button type="submit" *ngIf="isLastStep()" 
+              class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+        Kaydı Tamamla
+      </button>
+    </div>
+  </form>
+</section>

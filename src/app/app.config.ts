@@ -12,7 +12,7 @@ import {
 import { DropdownModule, SidebarModule } from '@coreui/angular';
 import { IconSetService } from '@coreui/icons-angular';
 import { routes } from './app.routes';
-import { firebaseProviders } from './core/firebase.providers';
+import { firebaseProviders } from './core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -25,7 +25,8 @@ export const appConfig: ApplicationConfig = {
         anchorScrolling: 'enabled'
       }),
       withEnabledBlockingInitialNavigation(),
-      withViewTransitions()
+      withViewTransitions(),
+      withHashLocation()
     ),
     importProvidersFrom(SidebarModule, DropdownModule),
     IconSetService,

@@ -18,10 +18,7 @@ export const routes: Routes = [
 
   //Student
   {path:'student',component:StudentComponent,children:studentRoutes,canActivate: [authGuard]},
-
-  //Student
-  {path:'student',component:StudentComponent,children:studentRoutes,canActivate: [authGuard]},
-
+  
   //Teacher
   {path:'teacher',component:TeacherComponent,children:teacherRoutes,canActivate: [authGuard]},
 

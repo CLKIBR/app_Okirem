@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from '../../../core/services/auth.service';
+import { AuthService } from '../../../core';
 import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 

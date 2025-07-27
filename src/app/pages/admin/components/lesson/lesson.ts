@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LessonService, Lesson } from '../../../../core/services/lesson.service';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { LessonService, Lesson } from '../../../../core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AddLessonModal } from './add/add-modal';
 import { UpdateLessonModal } from './update/update-modal';
 import { DeleteLessonModal } from './delete/delete-modal';
