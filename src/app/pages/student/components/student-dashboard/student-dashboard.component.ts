@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AuthService } from '../../../../core/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-dashboard',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./student-dashboard.component.scss']
 })
 export class StudentDashboardComponent {
-  // Dashboard logic will go here
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  
+  async logout() {
+    await this.authService.logout();
+    this.router.navigate(['/home']);
+  }
 }

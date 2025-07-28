@@ -1,21 +1,38 @@
-<section class="flex justify-center items-center min-h-[90vh] bg-white">
-  <div class="flex gap-16 items-center justify-center w-full h-full">
-    <div *ngFor="let card of roleCards" class="relative w-[340px] h-[400px] flex flex-col items-center cursor-pointer" (click)="selectRole(card.role)">
-      <!-- Gölge Arka Plan (Gradient) -->
-      <div class="absolute left-1/2 top-1/2 w-[325px] h-[385px] -translate-x-1/2 -translate-y-1/2 rotate-6 rounded-[2.5rem] shadow-2xl" [ngClass]="'bg-gradient-to-br ' + card.gradient"></div>
-      <!-- İç Kart -->
-      <div class="absolute left-1/2 top-1/2 w-[320px] h-[380px] -translate-x-1/2 -translate-y-1/2 rotate-6 space-y-8 rounded-[2.5rem] bg-white p-12 transition duration-300 hover:scale-105 hover:rotate-0 flex flex-col justify-between shadow-2xl">
-        <div class="flex justify-end">
-          <div class="h-8 w-8 rounded-full bg-indigo-700"></div>
+<section class="relative flex justify-center items-center min-h-[100vh] bg-white">
+
+  <!-- Üst: Balonlar -->
+  <div class="absolute top-[22px] w-full flex gap-16 justify-center items-start  z-20 left-[10px]">
+    <div *ngFor="let card of roleCards" class="flex-1 flex flex-col items-center">
+
+      <!-- Balon resmi ve metni -->
+      <div class="relative h-auto cursor-pointer" (click)="selectRole(card.role)">
+        <!-- Balon PNG – alt katman -->
+        <img [src]="'assets/images/balon.png'" alt="Balon" class="w-[400px] h-auto z-0" />
+
+        <!-- Mesaj – üst katman -->
+        <div class="absolute inset-0 z-10 w-[320px] max-w-full left-[40px]
+                    flex flex-col items-center justify-center -translate-y-5
+                    px-4 text-center text-base font-semibold text-black leading-snug pointer-events-none break-words">
+
+          <!-- Başlık (Öğrenciyim, Öğretmenim, Veliyim) -->
+          <div class="text-lg font-bold text-indigo-700 mb-2">{{ card.title }}</div>
+
+          <!-- Açıklama Mesajı -->
+          <div class="text-sm text-black font-medium">{{ card.message }}</div>
+
         </div>
-        <header class="flex items-center justify-center gap-4 text-center text-6xl font-extrabold text-indigo-400">
-          <iconify-icon [icon]="card.icon" width="120" height="120" [style.color]="getIconColor(card.gradient)"></iconify-icon>
-        </header>
-        <div>
-          <p class="text-center text-4xl font-extrabold text-gray-800">{{ card.title }}</p>
-          <p class="text-center text-base font-medium text-indigo-600 break-words">{{ card.description }}</p>
-        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Alt: Karakterler -->
+  <div class="absolute left-0 bottom-0 w-full flex gap-16 justify-center items-end">
+    <div *ngFor="let card of roleCards" class="flex-1 flex flex-col items-center justify-end h-[320px]">
+      <div class="w-full flex flex-col items-center cursor-pointer" (click)="selectRole(card.role)">
+        <img [src]="card.icon" [alt]="card.title" class="max-w-[60vh] max-h-[70vh] object-contain" />
       </div>
     </div>
   </div>
+
 </section>

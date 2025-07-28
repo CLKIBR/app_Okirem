@@ -1,17 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { RegistrationService, WizardStep, UserRole } from '../../../../../core';
 import { Firestore, doc, setDoc } from '@angular/fire/firestore';
-import { Auth } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-register-wizard',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl:   './register-wizard.component.html',
-  styleUrls: ['./register-wizard.component.scss']
+  templateUrl: './register-wizard.component.html',
+  styleUrls: ['./register-wizard.component.scss'],
 })
 export class RegisterWizardComponent implements OnInit {
   role: UserRole = 'student';
@@ -34,16 +39,20 @@ export class RegisterWizardComponent implements OnInit {
 
     const group: any = {};
     for (const step of this.steps) {
-      group[step.field] = [''];
+      group[step.field] = step.required ? ['', Validators.required] : [''];
     }
-
     this.form = this.fb.group(group);
-
-    console.log('📌 Rol:', this.role);
-    console.log('📋 Adımlar:', this.steps);
   }
 
   nextStep() {
+    const field = this.steps[this.currentStep].field;
+    const control = this.form.get(field);
+
+    if (control?.invalid) {
+      control.markAsTouched();
+      return;
+    }
+
     if (this.currentStep < this.steps.length - 1) {
       this.currentStep++;
     }
@@ -52,6 +61,8 @@ export class RegisterWizardComponent implements OnInit {
   prevStep() {
     if (this.currentStep > 0) {
       this.currentStep--;
+    } else {
+      this.router.navigate(['/register/wolcome']);
     }
   }
 
@@ -60,33 +71,42 @@ export class RegisterWizardComponent implements OnInit {
   }
 
   async submit() {
-    if (this.form.valid) {
-      try {
-        const user = this.auth.currentUser;
-        if (!user) throw new Error('Kullanıcı oturumu yok!');
-        const uid = user.uid;
+    if (!this.form.valid) {
+      const field = this.steps[this.currentStep].field;
+      this.form.get(field)?.markAsTouched();
+      return;
+    }
 
-        const data = {
-          ...this.form.value,
-          role: this.role,
-          createdAt: new Date().toISOString()
-        };
+    try {
+      const { email, password, ...profileData } = this.form.value;
 
-        const ref = doc(this.firestore, `users/${uid}/user-profile`);
-        await setDoc(ref, data);
+      // 🔐 Firebase Auth → kullanıcıyı oluştur
+      const userCredential = await createUserWithEmailAndPassword(
+        this.auth,
+        email,
+        password
+      );
+      const uid = userCredential.user.uid;
 
-        console.log('✅ Firestore kaydı başarılı:', data);
+      // 📁 Firestore → şifre HARİÇ tüm veriler
+      const data = {
+        ...profileData,
+        email, // 🔒 email kaydedilir
+        role: this.role,
+        createdAt: new Date().toISOString(),
+      };
 
-        // 🔁 Role'a göre yönlendirme
-        let targetRoute = '/dashboard';
-        if (this.role === 'teacher') targetRoute = '/teacher-dashboard';
-        else if (this.role === 'parent') targetRoute = '/parent-dashboard';
+      const ref = doc(this.firestore, `users/${uid}`);
+      await setDoc(ref, data);
 
-        this.router.navigate([targetRoute]);
+      // 🔁 Role'a göre yönlendirme
+      let targetRoute = '/student';
+      if (this.role === 'teacher') targetRoute = '/teacher';
+      else if (this.role === 'parent') targetRoute = '/parent';
 
-      } catch (err) {
-        console.error('❌ Firestore kayıt hatası:', err);
-      }
+      this.router.navigate([targetRoute]);
+    } catch (err) {
+      // TODO: kullanıcıya toast ile göster
     }
   }
 
@@ -96,11 +116,11 @@ export class RegisterWizardComponent implements OnInit {
 
     if (input.checked) {
       this.form.patchValue({
-        [field]: [...selected, input.value]
+        [field]: [...selected, input.value],
       });
     } else {
       this.form.patchValue({
-        [field]: selected.filter((v: string) => v !== input.value)
+        [field]: selected.filter((v: string) => v !== input.value),
       });
     }
   }

@@ -36,28 +36,32 @@ export class RegisterWolcome {
   router = inject(Router);
 
   roleCards = [
-    {
-      title: 'Öğrenciyim',
-      description: 'Görevleri tamamla, XP topla, seviye atla!',
-      icon: 'mdi:account-school',
-      role: 'student',
-      gradient: 'from-indigo-400 via-fuchsia-500 to-pink-500',
-    },
-    {
-      title: 'Öğretmenim',
-      description: 'Görev ata, takip et, raporla.',
-      icon: 'mdi:account-tie',
-      role: 'teacher',
-      gradient: 'from-blue-400 via-cyan-500 to-teal-400',
-    },
-    {
-      title: 'Veliyim',
-      description: 'Çocuğunun gelişimini takip et.',
-      icon: 'mdi:account-heart',
-      role: 'parent',
-      gradient: 'from-amber-400 via-orange-400 to-yellow-400',
-    },
-  ];
+  {
+    title: 'Öğrenciyim',
+    description: 'Görevleri tamamla, XP topla, seviye atla!',
+    icon: 'assets/images/hero.png',
+    role: 'student',
+    gradient: 'from-indigo-400 via-fuchsia-500 to-pink-500',
+    message: 'Hazırsan tıkla ve öğrenmeye başla! 🚀📚'
+  },
+  {
+    title: 'Öğretmenim',
+    description: 'Görev ata, takip et, raporla.',
+    icon: 'assets/images/teacher.png',
+    role: 'teacher',
+    gradient: 'from-blue-400 via-cyan-500 to-teal-400',
+    message: 'Hemen kaydol, öğrencilerinle fark yarat! 👩‍🏫✨'
+  },
+  {
+    title: 'Veliyim',
+    description: 'Çocuğunun gelişimini takip et.',
+    icon: 'assets/images/parents.png',
+    role: 'parent',
+    gradient: 'from-amber-400 via-orange-400 to-yellow-400',
+    message: 'Çocuğunun yolculuğuna katılmak için tıkla! 🧒❤️'
+  },
+];
+
 
   selectRole(role: string) {
     this.router.navigate(['/register/wizard'], {
