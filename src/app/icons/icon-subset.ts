@@ -98,6 +98,7 @@ import {
 
 import { signet } from './signet';
 import { logo } from './logo';
+import { homeIcon } from './home';
 
 export const iconSubset = {
   cibCcAmex,
@@ -196,7 +197,8 @@ export const iconSubset = {
   cilUserFollow,
   cilUserUnfollow,
   logo,
-  signet
+  signet,
+  homeIcon
 };
 
 export enum IconSubset {
@@ -296,6 +298,7 @@ export enum IconSubset {
   cilUserFollow = 'cilUserFollow',
   cilUserUnfollow = 'cilUserUnfollow',
   logo = 'logo',
-  signet = 'signet'
+  signet = 'signet',
+  homeIcon = 'homeIcon'
 }
 
