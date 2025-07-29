@@ -30,7 +30,7 @@ import { IconDirective } from '@coreui/icons-angular';
     selector: 'app-admin-header',
     templateUrl: './admin-header.html',
   imports: [ContainerComponent, HeaderTogglerDirective, SidebarToggleDirective, IconDirective, HeaderNavComponent, 
-    NavItemComponent, NavLinkDirective, RouterLink, RouterLinkActive, NgTemplateOutlet, BreadcrumbRouterComponent, 
+    NavItemComponent, NavLinkDirective, RouterLink, RouterLinkActive, NgTemplateOutlet, 
     DropdownComponent, DropdownToggleDirective, AvatarComponent, DropdownMenuDirective, DropdownHeaderDirective, 
     DropdownItemDirective, BadgeComponent, DropdownDividerDirective]
 })
