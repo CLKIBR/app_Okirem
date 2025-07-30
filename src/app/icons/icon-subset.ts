@@ -98,7 +98,15 @@ import {
 
 import { signet } from './signet';
 import { logo } from './logo';
-import { homeIcon } from './home';
+import { baslaIcon } from './basla';
+import { alistirmaIcon } from './alistirma';
+import { sinavIcon } from './sinav';
+import { kupaIcon } from './kupa';
+import { görevIcon } from './görev';
+import { marketIcon } from './market';
+import { profilIcon } from './profil';
+import { ayarIcon } from './ayar';
+
 
 export const iconSubset = {
   cibCcAmex,
@@ -198,7 +206,14 @@ export const iconSubset = {
   cilUserUnfollow,
   logo,
   signet,
-  homeIcon
+  baslaIcon,
+  alistirmaIcon,
+  sinavIcon,
+  kupaIcon,
+  görevIcon,
+  marketIcon,
+  profilIcon,
+  ayarIcon
 };
 
 export enum IconSubset {
@@ -299,6 +314,13 @@ export enum IconSubset {
   cilUserUnfollow = 'cilUserUnfollow',
   logo = 'logo',
   signet = 'signet',
-  homeIcon = 'homeIcon'
+  baslaIcon = 'baslaIcon',
+  alistirmaIcon = 'alistirmaIcon',
+  sinavIcon = 'sinavIcon',
+  kupaIcon = 'kupaIcon',
+  görevIcon = 'görevIcon',
+  marketIcon = 'marketIcon',
+  profilIcon = 'profilIcon',
+  ayarIcon = 'ayarIcon'
 }
 

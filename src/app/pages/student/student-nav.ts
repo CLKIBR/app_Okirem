@@ -2,29 +2,54 @@ import { INavData } from '@coreui/angular';
 
 export const navItems: INavData[] = [
   {
-    name: 'Dashboard',
+    name: 'BAŞLA',
     url: '/dashboard',
-    iconComponent: { name: 'homeIcon' },
-    badge: {
-      color: 'info',
-      text: 'NEW',
-    },
+    iconComponent: { name: 'baslaIcon' },
+    // badge: {
+    //   color: 'info',
+    //   text: 'NEW',
+    // },
   },
   {
-    name: 'Lesson',
+    name: 'ALIŞTIRMA YAP',
     url: '/admin/lesson',
-    iconComponent: { name: 'cil-drop' },
+    iconComponent: { name: 'alistirmaIcon' },
   },
   {
-    name: 'Typography',
+    name: 'SINAV ZAMANI',
     url: '/theme/typography',
     linkProps: { fragment: 'headings' },
-    iconComponent: { name: 'cil-pencil' },
+    iconComponent: { name: 'sinavIcon' },
   },
   {
-    name: 'Base',
+    name: 'SINIF KUPASI',
+    url: '/theme/typography',
+    linkProps: { fragment: 'headings' },
+    iconComponent: { name: 'kupaIcon' },
+  },
+  {
+    name: 'GÖREVLERİM',
+    url: '/theme/typography',
+    linkProps: { fragment: 'headings' },
+    iconComponent: { name: 'görevIcon' },
+  },
+  {
+    name: 'MARKET',
+    url: '/theme/typography',
+    linkProps: { fragment: 'headings' },
+    iconComponent: { name: 'marketIcon' },
+  },
+  {
+    name: 'PROFİL',
+    url: '/theme/typography',
+    linkProps: { fragment: 'headings' },
+    iconComponent: { name: 'profilIcon' },
+  },
+
+  {
+    name: 'AYARLAR',
     url: '/base',
-    iconComponent: { name: 'cil-puzzle' },
+    iconComponent: { name: 'ayarIcon' },
     children: [
       {
         name: 'Accordion',

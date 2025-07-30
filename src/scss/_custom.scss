@@ -27,7 +27,9 @@
 }
 
 .sidebar-nav .nav-link:hover {
-  font-weight: bold;
+  background-color: rgba(74, 180, 251, 0.1); /* Şeffaf arka plan */
+  border: 2px solid #4ab4fb;                 /* Kenarlık rengi */
+  border-radius: 0.5rem;                     /* (isteğe bağlı) Köşeleri yumuşatma */
 }
 
 .sidebar-nav .nav-link.active {
@@ -39,5 +41,6 @@
   display: flex;
   align-items: center;
   font-size: 1.1rem;
+  font-weight: bold;
   gap: 0.5rem; // İkon ile yazı arasındaki boşluk (0.5rem = 8px)
 }
