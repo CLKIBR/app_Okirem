@@ -3,7 +3,7 @@ import { INavData } from '@coreui/angular';
 export const navItems: INavData[] = [
   {
     name: 'BAŞLA',
-    url: '/dashboard',
+    url: '/student/dashboard',
     iconComponent: { name: 'baslaIcon' },
     // badge: {
     //   color: 'info',

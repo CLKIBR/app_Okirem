@@ -20,14 +20,16 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-drop' }
   },
   {
-    name: 'Typography',
-    url: '/theme/typography',
+    name: 'Uniteler',
+    url: '/admin/unit',
     linkProps: { fragment: 'headings' },
     iconComponent: { name: 'cil-pencil' }
   },
   {
-    name: 'Components',
-    title: true
+    name: 'Konular',
+    url: '/admin/topic',
+    linkProps: { fragment: 'headings' },
+    iconComponent: { name: 'cil-pencil' }
   },
   {
     name: 'Base',

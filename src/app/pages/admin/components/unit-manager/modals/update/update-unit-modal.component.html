@@ -1,0 +1,13 @@
+<div class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+  <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-sm">
+    <h2 class="text-lg font-bold mb-4">Unit Güncelle</h2>
+    <form [formGroup]="unitForm" (ngSubmit)="submit()">
+      <input formControlName="title" type="text" placeholder="Unit Title" class="w-full border rounded px-2 py-1 mb-2" />
+      <input formControlName="order" type="number" placeholder="Order" class="w-full border rounded px-2 py-1 mb-4" />
+      <div class="flex justify-end gap-2">
+        <button type="button" (click)="close.emit()" class="px-4 py-1 rounded bg-gray-200">İptal</button>
+        <button type="submit" [disabled]="unitForm.invalid" class="px-4 py-1 rounded bg-blue-500 text-white">Güncelle</button>
+      </div>
+    </form>
+  </div>
+</div>

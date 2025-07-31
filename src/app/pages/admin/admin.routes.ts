@@ -15,12 +15,12 @@ export const adminRoutes: Routes = [
     loadChildren: () => import('./../admin/components/lesson/lesson.router').then((m) => m.lessonRoutes)
   },
   {
-    path: 'base',
-    loadChildren: () => import('./../../shared/base/routes').then((m) => m.routes)
+    path: 'unit',
+    loadChildren: () => import('./components/unit-manager/unit.router').then((m) => m.unitRoutes)
   },
   {
-    path: 'buttons',
-    loadChildren: () => import('./../../shared/buttons/routes').then((m) => m.routes)
+    path: 'topic',
+    loadChildren: () => import('./components/topic-manager/topic.router').then((m) => m.topicRoutes)
   },
   {
     path: 'forms',
