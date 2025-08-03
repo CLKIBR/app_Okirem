@@ -1,0 +1,46 @@
+<section class="w-full" aria-label="Daily Tasks">
+  <div *ngIf="loading$ | async" class="flex justify-center items-center py-8">
+    <span class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></span>
+    <span class="ml-4">Loading tasks...</span>
+  </div>
+  <div *ngIf="error$ | async as error" class="text-center text-red-500 py-8" role="alert">
+    {{ error }}
+  </div>
+  <div *ngIf="(tasks$ | async)?.length === 0 && !(loading$ | async) && !(error$ | async)" class="text-center py-8">
+    <span>No daily tasks assigned.</span>
+  </div>
+  <ng-container *ngIf="tasks$ | async as tasks">
+    <div *ngIf="tasks.length > 0" class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div *ngFor="let task of tasks; trackBy: trackById" class="bg-white rounded-lg shadow p-4 flex flex-col justify-between" tabindex="0" role="listitem">
+      <div class="flex items-center mb-2">
+        <span class="mr-2 text-2xl">
+          <i [ngClass]="task.icon"></i>
+        </span>
+        <span class="font-bold text-lg">{{ task.title }}</span>
+      </div>
+      <div class="text-gray-600 mb-2">{{ task.description }}</div>
+      <div class="flex items-center mb-2">
+        <span class="px-2 py-1 rounded bg-blue-100 text-blue-700 text-xs font-semibold mr-2" *ngIf="task.rewardType === 'xp'">+{{ task.rewardValue }} XP</span>
+        <span class="px-2 py-1 rounded bg-yellow-100 text-yellow-700 text-xs font-semibold mr-2" *ngIf="task.rewardType === 'coin'">+{{ task.rewardValue }} Coin</span>
+      </div>
+      <div class="flex items-center justify-between mt-2">
+        <button
+          class="px-4 py-2 rounded text-white font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500"
+          [ngClass]="{
+            'bg-green-500 hover:bg-green-600': getStatus(task) === 'pending',
+            'bg-gray-400 cursor-not-allowed': getStatus(task) === 'completed',
+            'bg-red-400 cursor-not-allowed': getStatus(task) === 'expired'
+          }"
+          [disabled]="getStatus(task) !== 'pending'"
+          (click)="markComplete(task)"
+        >
+          <span *ngIf="getStatus(task) === 'pending'">Başla</span>
+          <span *ngIf="getStatus(task) === 'completed'">Tamamlandı</span>
+          <span *ngIf="getStatus(task) === 'expired'">Süresi Doldu</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="allComplete$ | async" class="mt-8 text-center text-lg font-bold text-green-600" aria-live="polite">
+    <ng-container *ngIf="quote">{{ quote }}</ng-container>
+  </div>
