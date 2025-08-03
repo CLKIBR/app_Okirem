@@ -21,8 +21,6 @@
 
       </div>
     </div>
-
-
   </div>
 
   <div class="relative py-3 sm:max-w-xl sm:mx-auto w-full">
@@ -32,11 +30,6 @@
 
     <div class="relative px-6 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-16">
       <div class="max-w-md mx-auto w-full">
-        <div class="text-center mb-6">
-
-
-        </div>
-
         <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-8">
           <ng-container *ngIf="steps.length > 0">
             <div class="relative">
@@ -48,10 +41,12 @@
                 <div *ngIf="steps[currentStep].field === 'fullName'">
                   <input type="text" formControlName="fullName" placeholder="{{ steps[currentStep].label }}"
                     class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 text-4xl font-bold focus:outline-none focus:border-indigo-500" />
-                  <label class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+                  <label
+                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
                     {{ steps[currentStep].label }}
                   </label>
-                  <div *ngIf="form.controls['fullName']?.invalid && form.controls['fullName']?.touched" class="text-red-500 text-sm mt-1">
+                  <div *ngIf="form.controls['fullName']?.invalid && form.controls['fullName']?.touched"
+                    class="text-red-500 text-sm mt-1">
                     {{ steps[currentStep].label }} girilmelidir.
                   </div>
                 </div>
@@ -60,10 +55,12 @@
                 <div *ngIf="steps[currentStep].field === 'school'">
                   <input type="text" formControlName="school" placeholder="{{ steps[currentStep].label }}"
                     class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 text-4xl font-bold focus:outline-none focus:border-indigo-500" />
-                  <label class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+                  <label
+                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
                     {{ steps[currentStep].label }}
                   </label>
-                  <div *ngIf="form.controls['school']?.invalid && form.controls['school']?.touched" class="text-red-500 text-sm mt-1">
+                  <div *ngIf="form.controls['school']?.invalid && form.controls['school']?.touched"
+                    class="text-red-500 text-sm mt-1">
                     {{ steps[currentStep].label }} girilmelidir.
                   </div>
                 </div>
@@ -72,10 +69,12 @@
                 <div *ngIf="steps[currentStep].field === 'class'">
                   <input type="text" formControlName="class" placeholder="{{ steps[currentStep].label }}"
                     class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 text-4xl font-bold focus:outline-none focus:border-indigo-500" />
-                  <label class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+                  <label
+                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
                     {{ steps[currentStep].label }}
                   </label>
-                  <div *ngIf="form.controls['class']?.invalid && form.controls['class']?.touched" class="text-red-500 text-sm mt-1">
+                  <div *ngIf="form.controls['class']?.invalid && form.controls['class']?.touched"
+                    class="text-red-500 text-sm mt-1">
                     {{ steps[currentStep].label }} girilmelidir.
                   </div>
                 </div>
@@ -84,10 +83,12 @@
                 <div *ngIf="steps[currentStep].field === 'schoolNumber'">
                   <input type="text" formControlName="schoolNumber" placeholder="{{ steps[currentStep].label }}"
                     class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 text-4xl font-bold focus:outline-none focus:border-indigo-500" />
-                  <label class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+                  <label
+                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
                     {{ steps[currentStep].label }}
                   </label>
-                  <div *ngIf="form.controls['schoolNumber']?.invalid && form.controls['schoolNumber']?.touched" class="text-red-500 text-sm mt-1">
+                  <div *ngIf="form.controls['schoolNumber']?.invalid && form.controls['schoolNumber']?.touched"
+                    class="text-red-500 text-sm mt-1">
                     {{ steps[currentStep].label }} girilmelidir.
                   </div>
                 </div>
@@ -96,10 +97,12 @@
                 <div *ngIf="steps[currentStep].field === 'favoriteSubject'">
                   <input type="text" formControlName="favoriteSubject" placeholder="{{ steps[currentStep].label }}"
                     class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 text-4xl font-bold focus:outline-none focus:border-indigo-500" />
-                  <label class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+                  <label
+                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
                     {{ steps[currentStep].label }}
                   </label>
-                  <div *ngIf="form.controls['favoriteSubject']?.invalid && form.controls['favoriteSubject']?.touched" class="text-red-500 text-sm mt-1">
+                  <div *ngIf="form.controls['favoriteSubject']?.invalid && form.controls['favoriteSubject']?.touched"
+                    class="text-red-500 text-sm mt-1">
                     {{ steps[currentStep].label }} girilmelidir.
                   </div>
                 </div>
@@ -108,10 +111,12 @@
                 <div *ngIf="steps[currentStep].field === 'hobbies'">
                   <input type="text" formControlName="hobbies" placeholder="{{ steps[currentStep].label }}"
                     class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 text-4xl font-bold focus:outline-none focus:border-indigo-500" />
-                  <label class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+                  <label
+                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
                     {{ steps[currentStep].label }}
                   </label>
-                  <div *ngIf="form.controls['hobbies']?.invalid && form.controls['hobbies']?.touched" class="text-red-500 text-sm mt-1">
+                  <div *ngIf="form.controls['hobbies']?.invalid && form.controls['hobbies']?.touched"
+                    class="text-red-500 text-sm mt-1">
                     {{ steps[currentStep].label }} girilmelidir.
                   </div>
                 </div>
@@ -120,10 +125,12 @@
                 <div *ngIf="steps[currentStep].field === 'futureDream'">
                   <input type="text" formControlName="futureDream" placeholder="{{ steps[currentStep].label }}"
                     class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 text-4xl font-bold focus:outline-none focus:border-indigo-500" />
-                  <label class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+                  <label
+                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
                     {{ steps[currentStep].label }}
                   </label>
-                  <div *ngIf="form.controls['futureDream']?.invalid && form.controls['futureDream']?.touched" class="text-red-500 text-sm mt-1">
+                  <div *ngIf="form.controls['futureDream']?.invalid && form.controls['futureDream']?.touched"
+                    class="text-red-500 text-sm mt-1">
                     {{ steps[currentStep].label }} girilmelidir.
                   </div>
                 </div>
@@ -132,10 +139,12 @@
                 <div *ngIf="steps[currentStep].field === 'quiz1'">
                   <input type="text" formControlName="quiz1" placeholder="{{ steps[currentStep].label }}"
                     class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 text-4xl font-bold focus:outline-none focus:border-indigo-500" />
-                  <label class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+                  <label
+                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
                     {{ steps[currentStep].label }}
                   </label>
-                  <div *ngIf="form.controls['quiz1']?.invalid && form.controls['quiz1']?.touched" class="text-red-500 text-sm mt-1">
+                  <div *ngIf="form.controls['quiz1']?.invalid && form.controls['quiz1']?.touched"
+                    class="text-red-500 text-sm mt-1">
                     {{ steps[currentStep].label }} girilmelidir.
                   </div>
                 </div>
@@ -144,10 +153,12 @@
                 <div *ngIf="steps[currentStep].field === 'quiz2'">
                   <input type="text" formControlName="quiz2" placeholder="{{ steps[currentStep].label }}"
                     class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 text-4xl font-bold focus:outline-none focus:border-indigo-500" />
-                  <label class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+                  <label
+                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
                     {{ steps[currentStep].label }}
                   </label>
-                  <div *ngIf="form.controls['quiz2']?.invalid && form.controls['quiz2']?.touched" class="text-red-500 text-sm mt-1">
+                  <div *ngIf="form.controls['quiz2']?.invalid && form.controls['quiz2']?.touched"
+                    class="text-red-500 text-sm mt-1">
                     {{ steps[currentStep].label }} girilmelidir.
                   </div>
                 </div>
@@ -156,10 +167,12 @@
                 <div *ngIf="steps[currentStep].field === 'branch'">
                   <input type="text" formControlName="branch" placeholder="{{ steps[currentStep].label }}"
                     class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 text-4xl font-bold focus:outline-none focus:border-indigo-500" />
-                  <label class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+                  <label
+                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
                     {{ steps[currentStep].label }}
                   </label>
-                  <div *ngIf="form.controls['branch']?.invalid && form.controls['branch']?.touched" class="text-red-500 text-sm mt-1">
+                  <div *ngIf="form.controls['branch']?.invalid && form.controls['branch']?.touched"
+                    class="text-red-500 text-sm mt-1">
                     {{ steps[currentStep].label }} girilmelidir.
                   </div>
                 </div>
@@ -168,10 +181,12 @@
                 <div *ngIf="steps[currentStep].field === 'classCount'">
                   <input type="text" formControlName="classCount" placeholder="{{ steps[currentStep].label }}"
                     class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 text-4xl font-bold focus:outline-none focus:border-indigo-500" />
-                  <label class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+                  <label
+                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
                     {{ steps[currentStep].label }}
                   </label>
-                  <div *ngIf="form.controls['classCount']?.invalid && form.controls['classCount']?.touched" class="text-red-500 text-sm mt-1">
+                  <div *ngIf="form.controls['classCount']?.invalid && form.controls['classCount']?.touched"
+                    class="text-red-500 text-sm mt-1">
                     {{ steps[currentStep].label }} girilmelidir.
                   </div>
                 </div>
@@ -180,10 +195,12 @@
                 <div *ngIf="steps[currentStep].field === 'experience'">
                   <input type="text" formControlName="experience" placeholder="{{ steps[currentStep].label }}"
                     class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 text-4xl font-bold focus:outline-none focus:border-indigo-500" />
-                  <label class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+                  <label
+                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
                     {{ steps[currentStep].label }}
                   </label>
-                  <div *ngIf="form.controls['experience']?.invalid && form.controls['experience']?.touched" class="text-red-500 text-sm mt-1">
+                  <div *ngIf="form.controls['experience']?.invalid && form.controls['experience']?.touched"
+                    class="text-red-500 text-sm mt-1">
                     {{ steps[currentStep].label }} girilmelidir.
                   </div>
                 </div>
@@ -192,10 +209,12 @@
                 <div *ngIf="steps[currentStep].field === 'language'">
                   <input type="text" formControlName="language" placeholder="{{ steps[currentStep].label }}"
                     class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 text-4xl font-bold focus:outline-none focus:border-indigo-500" />
-                  <label class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+                  <label
+                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
                     {{ steps[currentStep].label }}
                   </label>
-                  <div *ngIf="form.controls['language']?.invalid && form.controls['language']?.touched" class="text-red-500 text-sm mt-1">
+                  <div *ngIf="form.controls['language']?.invalid && form.controls['language']?.touched"
+                    class="text-red-500 text-sm mt-1">
                     {{ steps[currentStep].label }} girilmelidir.
                   </div>
                 </div>
@@ -204,10 +223,12 @@
                 <div *ngIf="steps[currentStep].field === 'childrenCount'">
                   <input type="text" formControlName="childrenCount" placeholder="{{ steps[currentStep].label }}"
                     class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 text-4xl font-bold focus:outline-none focus:border-indigo-500" />
-                  <label class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+                  <label
+                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
                     {{ steps[currentStep].label }}
                   </label>
-                  <div *ngIf="form.controls['childrenCount']?.invalid && form.controls['childrenCount']?.touched" class="text-red-500 text-sm mt-1">
+                  <div *ngIf="form.controls['childrenCount']?.invalid && form.controls['childrenCount']?.touched"
+                    class="text-red-500 text-sm mt-1">
                     {{ steps[currentStep].label }} girilmelidir.
                   </div>
                 </div>
@@ -216,10 +237,12 @@
                 <div *ngIf="steps[currentStep].field === 'studentNames'">
                   <input type="text" formControlName="studentNames" placeholder="{{ steps[currentStep].label }}"
                     class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 text-4xl font-bold focus:outline-none focus:border-indigo-500" />
-                  <label class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+                  <label
+                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
                     {{ steps[currentStep].label }}
                   </label>
-                  <div *ngIf="form.controls['studentNames']?.invalid && form.controls['studentNames']?.touched" class="text-red-500 text-sm mt-1">
+                  <div *ngIf="form.controls['studentNames']?.invalid && form.controls['studentNames']?.touched"
+                    class="text-red-500 text-sm mt-1">
                     {{ steps[currentStep].label }} girilmelidir.
                   </div>
                 </div>
@@ -228,10 +251,13 @@
                 <div *ngIf="steps[currentStep].field === 'contactPreference'">
                   <input type="text" formControlName="contactPreference" placeholder="{{ steps[currentStep].label }}"
                     class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 text-4xl font-bold focus:outline-none focus:border-indigo-500" />
-                  <label class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+                  <label
+                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
                     {{ steps[currentStep].label }}
                   </label>
-                  <div *ngIf="form.controls['contactPreference']?.invalid && form.controls['contactPreference']?.touched" class="text-red-500 text-sm mt-1">
+                  <div
+                    *ngIf="form.controls['contactPreference']?.invalid && form.controls['contactPreference']?.touched"
+                    class="text-red-500 text-sm mt-1">
                     {{ steps[currentStep].label }} girilmelidir.
                   </div>
                 </div>
@@ -240,10 +266,12 @@
                 <div *ngIf="steps[currentStep].field === 'email'">
                   <input type="text" formControlName="email" placeholder="{{ steps[currentStep].label }}"
                     class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 text-4xl font-bold focus:outline-none focus:border-indigo-500" />
-                  <label class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+                  <label
+                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
                     {{ steps[currentStep].label }}
                   </label>
-                  <div *ngIf="form.controls['email']?.invalid && form.controls['email']?.touched" class="text-red-500 text-sm mt-1">
+                  <div *ngIf="form.controls['email']?.invalid && form.controls['email']?.touched"
+                    class="text-red-500 text-sm mt-1">
                     {{ steps[currentStep].label }} girilmelidir.
                   </div>
                 </div>
@@ -252,10 +280,12 @@
                 <div *ngIf="steps[currentStep].field === 'password'">
                   <input type="password" formControlName="password" placeholder="{{ steps[currentStep].label }}"
                     class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 text-4xl font-bold focus:outline-none focus:border-indigo-500" />
-                  <label class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+                  <label
+                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
                     {{ steps[currentStep].label }}
                   </label>
-                  <div *ngIf="form.controls['password']?.invalid && form.controls['password']?.touched" class="text-red-500 text-sm mt-1">
+                  <div *ngIf="form.controls['password']?.invalid && form.controls['password']?.touched"
+                    class="text-red-500 text-sm mt-1">
                     {{ steps[currentStep].label }} girilmelidir.
                   </div>
                 </div>
@@ -302,7 +332,7 @@
 
           <!-- Butonlar -->
           <div class="flex justify-between">
-            <button type="button" (click)="prevStep()" 
+            <button type="button" (click)="prevStep()"
               class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">
               Geri
             </button>
@@ -323,8 +353,10 @@
   </div>
   <div class="absolute bottom-6 left-0 w-full flex flex-col items-center px-4 z-10">
     <p class="text-xs text-gray-600 text-center max-w-md">
-      Kayıt olarak, <a href="#" class="underline text-indigo-500">Koşullarımızı</a> ve <a href="#"
-        class="underline text-indigo-500">Gizlilik Politikamızı</a> kabul etmiş olursun.<br>
+      Kayıt olarak <a [routerLink]="['/legal/terms/terms-of-use']" class="underline text-indigo-500">Kullanım
+        Şartları</a>
+      ve <a [routerLink]="['/legal/policy/privacy-policy']" class="underline text-indigo-500">Gizlilik Politikası</a>'nı
+      kabul etmiş olursunuz.<br>
       Bu site reCAPTCHA Enterprise tarafından korunmaktadır ve Google <a href="https://policies.google.com/privacy"
         target="_blank" class="underline text-indigo-500">Gizlilik
         Politikası</a> ile <a href="https://policies.google.com/terms" target="_blank"
