@@ -1,7 +1,7 @@
 import { Routes } from "@angular/router";
-import { StudentDashboardComponent } from "./components";
+import { StudentDashboard } from "./components";
 
 export const studentRoutes: Routes = [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-    { path: 'dashboard', component: StudentDashboardComponent }
+    { path: 'dashboard', component: StudentDashboard}
 ]

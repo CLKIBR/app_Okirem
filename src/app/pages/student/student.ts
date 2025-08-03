@@ -27,10 +27,10 @@ import { NgScrollbar } from 'ngx-scrollbar';
     AdminFooter,
     AdminHeader
   ],
-  templateUrl: './student.component.html',
-  styleUrl: './student.component.scss'
+  templateUrl: './student.html',
+  styleUrls: ['./student.scss']
 })
-export class StudentComponent {
+export class Student {
   public navItems = navItems;
   @ViewChild('scrollable', { read: ElementRef }) scrollbarElementRef!: ElementRef;
 

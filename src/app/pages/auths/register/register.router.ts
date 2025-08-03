@@ -6,8 +6,8 @@ export const registerRoutes: Routes = [
   {
     path: 'wizard',
     loadComponent: () =>
-      import('./components/register-wizard/register-wizard.component').then(
-        (m) => m.RegisterWizardComponent
+      import('./components/register-wizard/register-wizard').then(
+        (m) => m.RegisterWizard
       ),
   },
 ];

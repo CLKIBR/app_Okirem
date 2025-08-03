@@ -1,13 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../../../../core/services/auth.service';
 import { Router } from '@angular/router';
+import { ColComponent, ContainerComponent, RowComponent } from '@coreui/angular';
 
 @Component({
-  selector: 'app-teacher-dashboard',
-  templateUrl: './teacher-dashboard.component.html',
-  styleUrls: ['./teacher-dashboard.component.scss']
+  selector: 'app-student-dashboard',
+  templateUrl: './student-dashboard.html',
+  styleUrls: ['./student-dashboard.scss'],
+  imports: [ContainerComponent, RowComponent, ColComponent],
 })
-export class TeacherDashboardComponent {
+export class StudentDashboard {
   private authService = inject(AuthService);
   private router = inject(Router);
   

@@ -5,10 +5,10 @@ import { AuthService } from '../../../../core/services/auth.service';
 @Component({
   selector: 'app-parent-dashboard',
   imports: [],
-  templateUrl: './parent-dashboard.component.html',
-  styleUrl: './parent-dashboard.component.scss'
+  templateUrl: './parent-dashboard.html',
+  styleUrl: './parent-dashboard.scss'
 })
-export class ParentDashboardComponent {
+export class ParentDashboard {
   private authService = inject(AuthService);
   private router = inject(Router);
   

@@ -1,1 +1,1 @@
-export * from './teacher-dashboard.component';
+export * from './teacher-dashboard';

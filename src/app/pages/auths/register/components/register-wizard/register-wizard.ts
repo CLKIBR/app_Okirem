@@ -15,10 +15,10 @@ import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
   selector: 'app-register-wizard',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './register-wizard.component.html',
-  styleUrls: ['./register-wizard.component.scss'],
+  templateUrl: './register-wizard.html',
+  styleUrls: ['./register-wizard.scss'],
 })
-export class RegisterWizardComponent implements OnInit {
+export class RegisterWizard implements OnInit {
   role: UserRole = 'student';
   steps: WizardStep[] = [];
   currentStep = 0;

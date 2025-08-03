@@ -1,1 +1,1 @@
-export * from './parent-dashboard/parent-dashboard.component';
+export * from './parent-dashboard/parent-dashboard';

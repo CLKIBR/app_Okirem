@@ -1,3 +1,3 @@
 export * from './student.router';
-export * from './student.component';
+export * from './student';
 export * from './components';
