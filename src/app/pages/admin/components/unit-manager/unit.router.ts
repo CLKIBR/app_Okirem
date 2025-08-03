@@ -14,7 +14,7 @@ export const unitRoutes: Routes = [
       },
       {
         path: 'unit',
-        loadComponent: () => import('./unit-manager.component').then(m => m.UnitManagerComponent),
+        loadComponent: () => import('./unit-manager').then(m => m.UnitManager),
         data: {
           title: 'Unit Yönetimi'
         }

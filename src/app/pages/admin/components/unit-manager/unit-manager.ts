@@ -19,10 +19,10 @@ interface Unit {
   selector: 'app-unit-manager',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, AddUnitModalComponent, UpdateUnitModalComponent, DeleteUnitModalComponent],
-  templateUrl: './unit-manager.component.html',
-  styleUrls: ['./unit-manager.component.scss'],
+  templateUrl: './unit-manager.html',
+  styleUrls: ['./unit-manager.scss'],
 })
-export class UnitManagerComponent {
+export class UnitManager {
   private firestore = inject(Firestore);
   showAddModal = false;
   editUnit: Unit | null = null;

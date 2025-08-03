@@ -14,7 +14,7 @@ export const topicRoutes: Routes = [
       },
       {
         path: 'topic',
-        loadComponent: () => import('./topic-manager.component').then(m => m.TopicManagerComponent),
+        loadComponent: () => import('./topic-manager').then(m => m.TopicManager),
         data: {
           title: 'Topic Yönetimi'
         }

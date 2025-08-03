@@ -2,12 +2,12 @@ import { Routes } from '@angular/router';
 import { Admin } from './pages/admin';
 import { adminRoutes } from './pages/admin/admin.routes';
 import { studentRoutes } from './pages/student/student.router';
-import { StudentComponent } from './pages/student';
+import { Student } from './pages/student';
 import { Register } from './pages/auths/register/register';
 import { registerRoutes } from './pages/auths/register/register.router';
 import { authGuard } from './core/guards/auth.guard';
 import { Home } from './pages/student/components/home/home';
-import { ParentComponent, parentRoutes, TeacherComponent, teacherRoutes } from './pages';
+import { ParentComponent, parentRoutes, Teacher, teacherRoutes } from './pages';
 
 export const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
@@ -17,10 +17,10 @@ export const routes: Routes = [
   {path:'admin',component:Admin,children:adminRoutes,canActivate: [authGuard]},
 
   //Student
-  {path:'student',component:StudentComponent,children:studentRoutes,canActivate: [authGuard]},
+  {path:'student',component:Student,children:studentRoutes,canActivate: [authGuard]},
   
   //Teacher
-  {path:'teacher',component:TeacherComponent,children:teacherRoutes,canActivate: [authGuard]},
+  {path:'teacher',component:Teacher,children:teacherRoutes,canActivate: [authGuard]},
 
   //Parent
   {path:'parent',component:ParentComponent,children:parentRoutes,canActivate: [authGuard]},

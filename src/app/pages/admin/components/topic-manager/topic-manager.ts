@@ -20,10 +20,10 @@ interface Topic {
   selector: 'app-topic-manager',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, AddTopicModalComponent, UpdateTopicModalComponent, DeleteTopicModalComponent],
-  templateUrl: './topic-manager.component.html',
-  styleUrls: ['./topic-manager.component.scss'],
+  templateUrl: './topic-manager.html',
+  styleUrls: ['./topic-manager.scss'],
 })
-export class TopicManagerComponent {
+export class TopicManager {
   @Input() unitId!: string;
   private firestore = inject(Firestore);
 
