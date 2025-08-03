@@ -2,7 +2,7 @@
 
 ## 1. Proje Vizyonu & Stratejik Hedefler
 
-### 1.1 Platform Vizyonu
+### 1.1 Platform Vizyonu ✅
 - Okirem, 1-8. sınıf öğrencileri, öğretmenler ve veliler için oyunlaştırılmış, erişilebilir, sürdürülebilir ve kişiselleştirilmiş dijital eğitim platformudur.
 - Eğitimde motivasyonu ve kalıcı öğrenmeyi artırmayı, ölçülebilir gelişim ve fırsat eşitliği sağlamayı hedefler.
 
@@ -14,13 +14,40 @@
 > New-Item -ItemType Directory -Path .\docs  
 > New-Item -ItemType File -Path .\docs\VISION.md
 
-### 1.2 Uzun Vadeli Stratejik Hedefler
+### 1.2 Uzun Vadeli Stratejik Hedefler ✅
 - Türkiye merkezli başlayıp, 5 yıl içinde bölgesel ve global pazara açılmak.
 - %99,9 uptime, yüksek kullanıcı memnuniyeti, sürdürülebilir gelir ve sosyal etki.
 
-### 1.3 Kısa ve Orta Vadeli Kazanımlar
+**Detaylı Hedefler:**
+- 2025-2026: Türkiye'de MVP lansmanı, pilot okullar ve topluluklar ile yaygınlaşma.
+- 2027: Bölgesel (Avrupa, Orta Doğu) pazarlara açılım, çoklu dil ve regülasyon desteği.
+- 2028: Global pazarda aktif kullanıcı sayısında %300 büyüme, uluslararası akreditasyon ve sertifikasyon.
+- 2029: Mobil uygulama, AR/VR entegrasyonu, AI tabanlı kişiselleştirme ve analitik modüllerin tam entegrasyonu.
+- 2030: Sürdürülebilir gelir modeli, sosyal etki raporları, açık kaynak ve topluluk katkısı ile platformun global liderliği.
+
+**Başarı Kriterleri:**
+- Aktif kullanıcı sayısı, retention, NPS, gelir, uptime, test coverage, sosyal etki metrikleri.
+
+### 1.3 Kısa ve Orta Vadeli Kazanımlar ✅
 - MVP ile hızlı kullanıcı kazanımı, pilot uygulamalar, aktif topluluklar.
 - İlk 12 ayda ulusal akreditasyon ve sertifikasyon altyapısının tamamlanması.
+
+**Kısa Vadeli Hedefler (0-12 Ay):**
+- MVP geliştirme ve yayına alma
+- Pilot okullarda uygulama ve geri bildirim toplama
+- Temel modüllerin (kayıt, panel, görev, ödül, liderlik tablosu) devreye alınması
+- Yasal dokümantasyon ve veri güvenliği süreçlerinin tamamlanması
+- Aktif topluluk ve kullanıcı desteği
+
+**Orta Vadeli Hedefler (12-36 Ay):**
+- Modüler geliştirme ile yeni feature ve modüllerin eklenmesi
+- AI tabanlı kişiselleştirme, analitik ve raporlama modüllerinin entegrasyonu
+- Bölgesel yayılım, çoklu dil desteği ve regülasyon uyumu
+- Sertifikasyon ve akreditasyon süreçlerinin tamamlanması
+- Sürdürülebilir gelir ve sosyal etki metriklerinin takibi
+
+**Başarı Kriterleri:**
+- MVP kullanıcı sayısı, pilot uygulama geri bildirimleri, modül entegrasyon hızı, topluluk büyümesi, yasal ve teknik uyum oranı
 
 ---
 

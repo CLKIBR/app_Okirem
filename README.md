@@ -1,3 +1,36 @@
+# Okirem Platformu
+
+## Vizyon
+Okirem, 1-8. sınıf öğrencileri, öğretmenler ve veliler için oyunlaştırılmış, erişilebilir, sürdürülebilir ve kişiselleştirilmiş dijital eğitim platformudur. Eğitimde motivasyonu ve kalıcı öğrenmeyi artırmayı, ölçülebilir gelişim ve fırsat eşitliği sağlamayı hedefler.
+
+### Temel Değerler
+- Eşitlik, erişilebilirlik, motivasyon, veri güvenliği, sürdürülebilirlik
+
+### Hedef Kitle
+- Türkiye'den başlayarak global ölçekte ilkokul ve ortaokul öğrencileri, öğretmenler, veliler ve eğitim kurumları
+
+### Teknik Vizyon
+- Modern Angular standalone mimarisi
+- Modüler ve ölçeklenebilir yapı
+- Bulut tabanlı altyapı (Firebase, Firestore, Auth, Storage)
+- Responsive ve hızlı arayüz (Tailwind, Iconify)
+- AI destekli kişiselleştirme ve analitik
+
+### İşlevsel Vizyon
+- Oyunlaştırma, görev ve ödül sistemi
+- Canlı ders, quiz/test, materyal yönetimi
+- Topluluk ve sosyal etki modülleri
+
+### Uzun Vadeli Hedefler
+- 5 yıl içinde bölgesel ve global pazara açılmak
+- %99,9 uptime, yüksek kullanıcı memnuniyeti, sürdürülebilir gelir ve sosyal etki
+
+## Stratejik Hedefler
+- MVP ile hızlı kullanıcı kazanımı, pilot uygulamalar, aktif topluluklar
+- İlk 12 ayda ulusal akreditasyon ve sertifikasyon altyapısının tamamlanması
+- Sürekli modüler geliştirme ve otomatik dokümantasyon
+
+---
 # Okirem
 
 ## Lisans
@@ -27,3 +60,6 @@ Kütüphanelerin detaylı lisans bilgileri için ilgili paketlerin resmi sayfala
 
 ---
 Diğer proje bilgileri ve kullanım talimatları buraya eklenebilir.
+
+## Otomatik Güncelleme
+Her yeni ana modül veya feature eklendiğinde, bu README.md dosyası ve docs/VISION.md otomatik olarak güncellenmelidir. Bunun için Angular CLI, custom script veya CI/CD pipeline ile modül/feature ekleme tespit edilip, ilgili dokümantasyon güncellenir.
