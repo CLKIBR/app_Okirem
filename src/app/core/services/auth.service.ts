@@ -1,4 +1,5 @@
 import { Injectable, inject } from '@angular/core';
+import { DataEncryptionService } from './data-encryption.service';
 import {
   Auth,
   signInWithEmailAndPassword,
@@ -15,8 +16,14 @@ import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private auth = inject(Auth);
-  public user$: Observable<User | null> = authState(this.auth);
+  public user$: Observable<User | null>;
+
+  constructor(
+    private auth: Auth,
+    private encryptionService: DataEncryptionService
+  ) {
+    this.user$ = authState(this.auth);
+  }
 
   getUserRole$(uid: string): Observable<string | null> {
     return from(
@@ -31,9 +38,7 @@ export class AuthService {
   }
 
   loginWithEmail(email: string, password: string): Promise<void> {
-    return signInWithEmailAndPassword(this.auth, email, password).then(
-      () => {}
-    );
+    return signInWithEmailAndPassword(this.auth, email, password).then(() => {});
   }
 
   loginWithGoogle(): Promise<void> {
@@ -63,13 +68,21 @@ export class AuthService {
       password
     );
     if (extraData) {
+      // Şifrelenmesi gereken alanlar listesi
+      const fieldsToEncrypt = ['tcKimlik', 'phone', 'address'];
+      const encryptedData = { ...extraData };
+      fieldsToEncrypt.forEach(field => {
+        if (extraData[field]) {
+          encryptedData[field] = this.encryptionService.encryptData(extraData[field]);
+        }
+      });
       // Firestore'a kullanıcı ekle
       const { getFirestore, doc, setDoc } = await import('firebase/firestore');
       const db = getFirestore();
       await setDoc(doc(db, 'users', cred.user.uid), {
         email,
         role: extraData.role,
-        ...extraData,
+        ...encryptedData,
       });
     }
   }
