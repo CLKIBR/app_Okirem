@@ -1,0 +1,25 @@
+.legal-consent-text {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 1.5rem;
+  font-size: 1rem;
+  color: #222;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.legal-consent-text h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+.legal-consent-text ul {
+  margin: 1rem 0;
+  padding-left: 1.2rem;
+}
+.legal-consent-text label {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+.legal-consent-text input[type="checkbox"] {
+  margin-right: 0.5rem;
+}

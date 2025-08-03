@@ -1,12 +1,12 @@
 // ...existing code...
 import { Component, inject, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register-wolcome',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterLink],
   templateUrl: './register-wolcome.html',
   styleUrl: './register-wolcome.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
