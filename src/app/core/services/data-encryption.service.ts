@@ -1,4 +1,4 @@
-const CryptoJS = require('crypto-js');
+import * as CryptoJS from 'crypto-js';
 import { Injectable } from '@angular/core';
 import { environment } from './../../../environments/environment';
 
