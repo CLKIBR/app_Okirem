@@ -1,3 +1,5 @@
+// Copyright (c) 2025 CLKIBR
+// Tüm Hakları Saklıdır - Ayrıntılar için LICENSE dosyasına bakınız
 /// <reference types="@angular/localize" />
 
 import { bootstrapApplication } from '@angular/platform-browser';

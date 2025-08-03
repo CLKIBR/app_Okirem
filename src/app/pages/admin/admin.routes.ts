@@ -1,15 +1,17 @@
 import { Routes } from "@angular/router";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
-
+import { AuditLogPanel } from './components/audit-log-panel/audit-log-panel';
+import { AuditLogGuard } from '../../core/guards/audit-log-guard';
 
 export const adminRoutes: Routes = [
-
   //adminhomepage
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
-
-
-
+  {
+    path: 'audit-logs',
+    component: AuditLogPanel,
+    canActivate: [AuditLogGuard]
+  },
   {
     path: 'lesson',
     loadChildren: () => import('./../admin/components/lesson/lesson.router').then((m) => m.lessonRoutes)

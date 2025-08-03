@@ -1,0 +1,32 @@
+<div
+  class="mx-auto w-screen max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 lg:py-32">
+  <div class="max-w-prose text-left ">
+    <h1 class="text-4xl text-center font-bold text-gray-900 sm:text-5xl">
+      Hesabını <strong class="text-rose-600">kalıcı olarak sil</strong> ve tüm verilerini kaldır
+    </h1>
+
+    <p class="mt-4 text-center text-pretty text-gray-700 sm:text-lg/relaxed">
+      Hesabını silmek üzeresin! <span class="font-semibold text-indigo-600">Okirem’deki ilerlemeni, başarılarını
+        ve kazandığın ödülleri kaybetmek istemezsin!</span>
+      Burada öğrenmeye ve gelişmeye devam edebilirsin. Geri dönmek için hâlâ vaktin var!
+    </p>
+
+    <div class="mt-4 flex justify-center gap-4 sm:mt-6">
+      <a class="inline-block rounded border border-indigo-600 bg-yellow-600 px-5 py-3 font-medium text-white shadow-sm transition-colors hover:bg-yellow-700"
+        (click)="eraseData()">
+        Verilerimi Sil
+      </a>
+
+      <a class="inline-block rounded border border-gray-200  bg-rose-600 px-5 py-3 font-medium text-white shadow-sm transition-colors hover:bg-rose-700 hover:text-gray-900"
+        (click)="deleteAccount()">
+        Hesabımı Kapat
+      </a>
+    </div>
+  </div>
+
+  <div class="mx-auto hidden max-w-md md:block">
+    <lottie-player src="https://lottie.host/0b3532a6-241b-4279-b1df-2c619dcf0abf/gQtAmXltRv.json"
+      background="transparent" speed="1" style="width:100%;max-width:400px;height:300px;margin:auto;" loop autoplay
+      aria-label="Modern hesap silme animasyonu"></lottie-player>
+  </div>
+</div>

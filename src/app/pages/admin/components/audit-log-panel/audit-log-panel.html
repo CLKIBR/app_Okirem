@@ -1,0 +1,20 @@
+<div class="audit-log-panel">
+  <h2>Audit Log Paneli</h2>
+  <input type="text" [(ngModel)]="filter" placeholder="Filtrele..." />
+  <button *ngIf="(logs$ | async) as logs" (click)="exportCSV(logs)">CSV Olarak Dışa Aktar</button>
+  <table *ngIf="(logs$ | async) as logs">
+    <thead>
+      <tr>
+        <th *ngFor="let key of getKeys(logs[0])">{{ key }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let log of logs">
+        <td *ngFor="let key of getKeys(log)">{{ log[key] }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="(logs$ | async)?.length === 0" class="empty-message">
+    Kayıt bulunamadı.
+  </div>
+</div>

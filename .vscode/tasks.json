@@ -1,0 +1,15 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "Angular Build & Test",
+			"command": "npm run build && npm test",
+			"group": "build",
+			"problemMatcher": [
+				"$tsc",
+				"$eslint-stylish"
+			]
+		}
+	]
+}

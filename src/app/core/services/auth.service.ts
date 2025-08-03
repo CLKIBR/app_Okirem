@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { DataEncryptionService } from './data-encryption.service';
 import {
   Auth,
@@ -11,6 +11,7 @@ import {
   User,
   authState,
 } from '@angular/fire/auth';
+import { Firestore, doc, getDoc, setDoc, addDoc, collection } from '@angular/fire/firestore';
 import { from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -20,6 +21,7 @@ export class AuthService {
 
   constructor(
     private auth: Auth,
+    private firestore: Firestore,
     private encryptionService: DataEncryptionService
   ) {
     this.user$ = authState(this.auth);
@@ -27,18 +29,20 @@ export class AuthService {
 
   getUserRole$(uid: string): Observable<string | null> {
     return from(
-      import('firebase/firestore').then(
-        async ({ getFirestore, doc, getDoc }) => {
-          const db = getFirestore();
-          const userDoc = await getDoc(doc(db, 'users', uid));
-          return userDoc.exists() ? userDoc.data()['role'] : null;
-        }
+      getDoc(doc(this.firestore, 'users', uid)).then(userDoc =>
+        userDoc.exists() ? userDoc.data()['role'] : null
       )
     );
   }
 
-  loginWithEmail(email: string, password: string): Promise<void> {
-    return signInWithEmailAndPassword(this.auth, email, password).then(() => {});
+  async loginWithEmail(email: string, password: string): Promise<void> {
+    try {
+      await signInWithEmailAndPassword(this.auth, email, password);
+      await this.logAudit('login', email, 'Giriş başarılı');
+    } catch (error) {
+      await this.logAudit('login', email, 'Giriş başarısız: ' + error);
+      throw error;
+    }
   }
 
   loginWithGoogle(): Promise<void> {
@@ -49,8 +53,10 @@ export class AuthService {
     return user(this.auth).pipe(map((u) => !!u));
   }
 
-  logout(): Promise<void> {
-    return signOut(this.auth);
+  async logout(): Promise<void> {
+    const user = this.auth.currentUser;
+    await signOut(this.auth);
+    await this.logAudit('logout', user?.email || '', 'Çıkış yapıldı');
   }
 
   get currentUser() {
@@ -62,28 +68,55 @@ export class AuthService {
     password: string,
     extraData?: any
   ): Promise<void> {
-    const cred = await createUserWithEmailAndPassword(
-      this.auth,
-      email,
-      password
-    );
-    if (extraData) {
-      // Şifrelenmesi gereken alanlar listesi
-      const fieldsToEncrypt = ['tcKimlik', 'phone', 'address'];
-      const encryptedData = { ...extraData };
-      fieldsToEncrypt.forEach(field => {
-        if (extraData[field]) {
-          encryptedData[field] = this.encryptionService.encryptData(extraData[field]);
-        }
-      });
-      // Firestore'a kullanıcı ekle
-      const { getFirestore, doc, setDoc } = await import('firebase/firestore');
-      const db = getFirestore();
-      await setDoc(doc(db, 'users', cred.user.uid), {
+    try {
+      const cred = await createUserWithEmailAndPassword(
+        this.auth,
         email,
-        role: extraData.role,
-        ...encryptedData,
+        password
+      );
+      if (extraData) {
+        // Şifrelenmesi gereken alanlar listesi
+        const fieldsToEncrypt = ['tcKimlik', 'phone', 'address'];
+        const encryptedData = { ...extraData };
+        fieldsToEncrypt.forEach(field => {
+          if (extraData[field]) {
+            encryptedData[field] = this.encryptionService.encryptData(extraData[field]);
+          }
+        });
+        // Firestore'a kullanıcı ekle
+        await setDoc(doc(this.firestore, 'users', cred.user.uid), {
+          email,
+          role: extraData.role,
+          ...encryptedData,
+        });
+      }
+      await this.logAudit('register', email, 'Kayıt başarılı');
+    } catch (error) {
+      await this.logAudit('register', email, 'Kayıt başarısız: ' + error);
+      throw error;
+    }
+  }
+
+  async logAudit(action: string, user: string, message: string) {
+    try {
+      // IP adresini almak için basit bir fetch
+      let ip = '';
+      try {
+        const res = await fetch('https://api.ipify.org?format=json');
+        const data = await res.json();
+        ip = data.ip;
+      } catch (e) {
+        ip = 'unknown';
+      }
+      await addDoc(collection(this.firestore, 'audit_logs'), {
+        action,
+        user,
+        message,
+        timestamp: new Date().toISOString(),
+        ip
       });
+    } catch (e) {
+      // log hatası sessiz geçilsin
     }
   }
 }

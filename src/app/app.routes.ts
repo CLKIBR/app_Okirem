@@ -14,11 +14,12 @@ import {
   Admin,
   Student,
 } from './pages';
+import { settingsRoutes } from './pages/settings/settings.routes';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: Home },
-
+  
   // Admin
   {
     path: 'admin',

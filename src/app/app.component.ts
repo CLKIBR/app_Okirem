@@ -1,3 +1,5 @@
+// Copyright (c) 2025 CLKIBR
+// Tüm Hakları Saklıdır - Ayrıntılar için LICENSE dosyasına bakınız
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Title } from '@angular/platform-browser';

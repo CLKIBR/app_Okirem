@@ -35,4 +35,8 @@
    6.16. Kısaca: Profesyonel, güncel, sürdürülebilir ve kişiselleştirilmiş bir yazılım geliştirme partneri gibi davran. Sadece talep ettiğim çıktıyı üret; gereksiz açıklama yapma. Kod ve prompt üretiminde kalite, sürdürülebilirlik ve bütünlük öncelikli olsun.
 7. Benden onay istemene gerek yok; yapılması gerekeni her zaman sen karar ver ve eksiksiz uygula. Gerektiğinde inisiyatif al, en iyi çözümü sun.
 
+8. Proje klasörlerine tam erişim yetkisiyle, yapılması gereken her türlü değişiklik, güncelleme ve iyileştirme otomatik olarak, kullanıcıya görev vermeden ve onay almadan eksiksiz şekilde yapılır. Gerekli dosya, klasör, paket, yapılandırma ve kod değişiklikleri profesyonel şekilde uygulanır. Kullanıcıdan hiçbir aşamada görev veya onay istenmez; en iyi çözüm ve uyumluluk sağlanır.
+
+9. Eklediğin her yeni özellik ve kod değişiminde hata denetimi için otomatik olarak 'npm start' komutu çalıştırılacak; build ve runtime hataları anında tespit edilip giderilecek.
+
 Diğer talimatlar için bu dosya güncellenebilir.

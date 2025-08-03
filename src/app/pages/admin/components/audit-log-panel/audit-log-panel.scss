@@ -1,0 +1,36 @@
+.audit-log-panel {
+  padding: 2rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  text-align: left;
+}
+th {
+  background: #eee;
+}
+input {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  width: 200px;
+}
+button {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background: #4f46e5;
+}

@@ -290,5 +290,14 @@ export const navItems: INavData[] = [
     url: 'https://coreui.io/angular/docs/',
     iconComponent: { name: 'cil-description' },
     attributes: { target: '_blank' }
+  },
+  {
+    title: true,
+    name: 'Ayarlar'
+  },
+  {
+    name: 'Log İşlemleri',
+    url: '/admin/audit-logs',
+    iconComponent: { name: 'cil-list' }
   }
 ];
