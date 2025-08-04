@@ -75,12 +75,14 @@ Bu dosya, src klasörü ve 4 derinliğe kadar alt klasörlerdeki tüm README.md 
 - Admin paneli, denetim ve yönetim işlemlerini, log ve raporlama modülleriyle destekler.
 
 ## 5. Örnek Açıklamalar
-- `student/components/daily-tasks/daily-tasks.ts`: Öğrenciye ait günlük görevleri listeler, tamamlanma ve ödül yönetimi sağlar, Firestore ile veri çeker/günceller, RxJS ile state yönetimi yapar.
 - `teacher/components/teacher-dashboard/teacher-dashboard.ts`: Öğretmen dashboard, oturum yönetimi, çıkış fonksiyonu, arayüz ve stil dosyaları ile dashboard görünümü.
 - `settings/account-settings/account-settings.ts`: Kullanıcı rolüne göre hesap ve veri silme işlemleri, API entegrasyonu, hata yönetimi, arayüz.
 - `auths/register/components/register-wizard/register-wizard.ts`: Kayıt sihirbazı, rol tabanlı adımlar, reactive form, Firestore ve Auth ile kullanıcı kaydı, yönlendirme.
 - `admin/components/unit-manager/unit-manager.ts`: Ünite ekleme, güncelleme, silme ve listeleme işlemleri, modal bileşenlerle yönetim.
 - `admin/components/dashboard/dashboard.component.ts`: Admin paneli için özet, istatistik, hızlı erişim ve grafik bileşenleri, Chart.js entegrasyonu.
-
+- `student/components/daily-tasks/daily-tasks.ts`: Öğrenciye ait günlük görevleri listeler, görevleri aktif/tamamlanan/süresi geçmiş olarak kategorize eder, arayüzde butonlarla geçiş sağlar. Firestore ile veri çeker/günceller, XP güncellemesini doğrudan users koleksiyonunda yapar, RxJS ile state yönetimi ve Angular Router ile SPA navigasyonu sunar. Tüm console.log mesajları kaldırıldı.
+- `student/components/daily-tasks/README.md`: Bileşenin tüm özellikleri, arayüzdeki görev kategorileri, butonlar, XP güncelleme, SPA navigasyonu ve hata yönetimi detaylı olarak açıklanmıştır.
+- `student/components/task-play/task-play.ts`: Öğrencinin seçtiği görevi/kuizi oynayabileceği, tamamlayınca ödül (XP/Coin) kazanabileceği ve dashboard'a yönlendirileceği bileşen. XP güncellemesi doğrudan users koleksiyonunda yapılır, SPA navigasyonu ve hata yönetimi sunar. Tüm console.log mesajları kaldırıldı.
+- `student/components/task-play/README.md`: Bileşenin tüm özellikleri, görev/quiz tamamlama, XP/ödül güncelleme, SPA navigasyonu ve hata yönetimi detaylı olarak açıklanmıştır.
 ---
 Her klasör, component, servis ve modülün koduna ve işlevine dair açıklamalar ilgili README.md dosyalarında yer alır. Proje; modüler yapı, rollere özel sayfa ve bileşenler, yasal doküman yönetimi, tema/stil altyapısı, statik dosya yönetimi ve harici kütüphane entegrasyonları ile profesyonel, sürdürülebilir ve geliştirici dostu bir mimariye sahiptir.

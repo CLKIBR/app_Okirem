@@ -28,12 +28,20 @@ Bu klasör, öğrenci kullanıcılar için sayfa ve bileşenleri içerir. Tüm .
   - Eğer veri yoksa örnek ders kartları gösterir.
   - Router ve LessonService entegrasyonu ile dinamik veri yönetimi sağlar.
 
+
 #### student-dashboard
 - **student-dashboard.ts**:
   - Angular `@Component` ile tanımlanmış, standalone bir bileşendir.
   - `AuthService` ile oturum yönetimi sağlar.
   - `logout()` fonksiyonu ile kullanıcıyı çıkış yaptırır ve ana sayfaya yönlendirir.
   - Arayüz ve stil dosyaları ile dashboard görünümünü sunar.
+  - Dashboard arayüzünde günlük görevler (`daily-tasks` bileşeni) doğrudan sergilenir.
+
+#### task-play
+- **task-play.ts**:
+  - Angular `@Component` ile tanımlanmış, standalone bir bileşendir.
+  - Kullanıcı bir göreve tıkladığında ilgili quiz veya oyun arayüzünü gösterir.
+  - Görev tipi ve hedefi router ile alınır, arayüzde uygun içerik sunulur.
 
 ---
 Her alt klasörde, ilgili bileşenin koduna ve işlevine dair açıklamalar README.md dosyasında yer alır.

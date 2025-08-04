@@ -1,0 +1,35 @@
+<section class="w-full" aria-label="Leaderboard">
+  <div *ngIf="loading$ | async" class="flex justify-center items-center py-8">
+    <span class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></span>
+    <span class="ml-4">Liderlik tablosu yükleniyor...</span>
+  </div>
+  <div *ngIf="error$ | async as error" class="text-center text-red-500 py-8" role="alert">
+    {{ error }}
+  </div>
+  <div *ngIf="(users$ | async)?.length === 0 && !(loading$ | async) && !(error$ | async)" class="text-center py-8">
+    <span>Henüz liderlik tablosu verisi yok.</span>
+  </div>
+  <div *ngIf="users$ | async as users">
+    <div class="overflow-x-auto">
+      <table class="min-w-full bg-white rounded-lg shadow">
+        <thead>
+          <tr>
+            <th class="px-4 py-2">Sıra</th>
+            <th class="px-4 py-2">Kullanıcı</th>
+            <th class="px-4 py-2">XP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users; let i = index" [ngClass]="{ 'bg-yellow-100': i === 0, 'bg-gray-100': i === 1, 'bg-orange-100': i === 2 }">
+            <td class="px-4 py-2 font-bold">{{ i + 1 }}</td>
+            <td class="px-4 py-2 flex items-center">
+              <img *ngIf="user.avatarUrl" [src]="user.avatarUrl" alt="avatar" class="w-8 h-8 rounded-full mr-2" />
+              <span>{{ user.fullName }}</span>
+            </td>
+            <td class="px-4 py-2">{{ user.xpVolume }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

@@ -23,7 +23,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'SINIF KUPASI',
-    url: '/theme/typography',
+    url: '/student/leaderboard',
     linkProps: { fragment: 'headings' },
     iconComponent: { name: 'kupaIcon' },
   },

@@ -1,0 +1,20 @@
+<div class="task-play">
+  <h2>Görev Detayı</h2>
+  <ng-container *ngIf="taskType === 'quiz'">
+    <p>Quiz arayüzü burada olacak. (taskTarget: {{taskTarget}})</p>
+    <div *ngIf="!quizAnswered">
+      <p class="mt-4">Soru: 2 + 2 = ?</p>
+      <button class="px-4 py-2 bg-blue-500 text-white rounded mr-2" (click)="completeQuiz()" [disabled]="loading">4</button>
+      <button class="px-4 py-2 bg-gray-300 text-gray-700 rounded" disabled>5</button>
+    </div>
+    <div *ngIf="quizAnswered && quizCorrect" class="mt-4 text-green-600 font-bold">
+      Doğru! Görev tamamlandı ve {{rewardValue}} XP kazandınız.
+    </div>
+  </ng-container>
+  <ng-container *ngIf="taskType === 'game'">
+    <p>Oyun arayüzü burada olacak. (taskTarget: {{taskTarget}})</p>
+  </ng-container>
+  <ng-container *ngIf="taskType !== 'quiz' && taskType !== 'game'">
+    <p>Bu görev için özel bir arayüz tanımlanmadı.</p>
+  </ng-container>
+</div>
