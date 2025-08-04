@@ -1,0 +1,31 @@
+<h2>Canlı Ders Modülü</h2>
+<div style="margin-bottom:16px; display: flex; gap: 16px;">
+  <div style="position: relative;">
+    <span style="position: absolute; top: 4px; left: 8px; background: #fff; padding: 2px 8px; border-radius: 4px; font-size: 14px; z-index: 2;">{{kullaniciAdi || 'Ben'}}</span>
+    <video #localVideo autoplay playsinline muted width="320" height="240"></video>
+  </div>
+  <div style="position: relative;">
+    <span style="position: absolute; top: 4px; left: 8px; background: #fff; padding: 2px 8px; border-radius: 4px; font-size: 14px; z-index: 2;">{{karsiKullaniciAdi || 'Karşı'}}</span>
+    <video #remoteVideo autoplay playsinline width="320" height="240"></video>
+  </div>
+</div>
+<div style="margin-bottom:12px;">
+  <input [(ngModel)]="kullaniciAdi" placeholder="Adınızı girin" style="width:180px; margin-right:8px;" />
+</div>
+<button (click)="startLocalStream()">Kamera Aç</button>
+<button (click)="startCall()">Görüşme Başlat</button>
+<button (click)="hangUp()">Görüşmeyi Bitir</button>
+<button (click)="baslat()">Dersi Başlat</button>
+<button (click)="bitir()">Dersi Bitir</button>
+<button (click)="entegrasyonTest()">Entegrasyon Testi</button>
+<div style="margin-top:16px;">
+  <input [(ngModel)]="yeniKatilimci" placeholder="Katılımcı adı" />
+  <button (click)="katilimciEkle()">Katılımcı Ekle</button>
+  <button (click)="katilimciCikar()">Katılımcı Çıkar</button>
+</div>
+<div style="margin-top:16px;">
+  <strong>Katılımcılar:</strong>
+  <ul>
+    <li *ngFor="let k of katilimcilar">{{k}}</li>
+  </ul>
+</div>

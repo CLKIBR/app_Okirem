@@ -3,12 +3,13 @@ import { AuthService } from '../../../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { ColComponent, ContainerComponent, RowComponent } from '@coreui/angular';
 import { DailyTasksComponent } from '../daily-tasks/daily-tasks';
+import { CanliDers } from '../../../../core';
 
 @Component({
   selector: 'app-student-dashboard',
   templateUrl: './student-dashboard.html',
   styleUrls: ['./student-dashboard.scss'],
-  imports: [ContainerComponent, RowComponent, ColComponent, DailyTasksComponent],
+  imports: [ContainerComponent, RowComponent, ColComponent, DailyTasksComponent,CanliDers],
 })
 export class StudentDashboard {
   private authService = inject(AuthService);

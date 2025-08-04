@@ -2,12 +2,12 @@
   <c-row>
     <c-col xs="8">
       <div class="student-dashboard">
-        <h2 (click)="logout()">Öğrenci Paneli</h2>
-        <hr />
         <h3>Günlük Görevler</h3>
         <daily-tasks [studentId]="studentId"></daily-tasks>
       </div>
     </c-col>
-    <c-col>3 of 3</c-col>
+    <c-col>
+      <app-canli-ders></app-canli-ders>
+    </c-col>
   </c-row>
 </c-container>

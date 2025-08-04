@@ -53,7 +53,7 @@
 
 ## 2. Ürün Yol Haritası & Modül Geliştirme
 
-### 2.1 Minimum Viable Product (MVP)
+### 2.1 Minimum Viable Product (MVP) ✅
 - Temel kullanıcı kayıt/giriş, öğrenci/öğretmen/veli paneli.
 - Ders oynama, görev sistemi, ödüller, liderlik tablosu.
 - Sade ve hızlı arayüz, responsive tasarım, temel yasal dokümantasyon.

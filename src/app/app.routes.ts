@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { legalRoutes } from './shared';
-import { authGuard } from './core';
+import { authGuard,CanliDers } from './core';
 import {
   ParentComponent,
   parentRoutes,
@@ -14,7 +14,6 @@ import {
   Admin,
   Student,
 } from './pages';
-import { settingsRoutes } from './pages/settings/settings.routes';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -62,6 +61,11 @@ export const routes: Routes = [
   {
     path: 'legal',
     children: legalRoutes,
+  },
+  {
+    path: 'canli-ders',
+    component: CanliDers,
+    title: 'Canlı Ders'
   },
   { path: '**', redirectTo: 'home' },
 ];

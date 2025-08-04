@@ -8,6 +8,8 @@ Bu klasördeki TypeScript dosyaları ve modüller:
 - wizard/: Adım adım ilerleyen sihirbaz modülleri.
 - index.ts: Çekirdek modüllerin dışa aktarımı.
 
+- phases/: Proje fazlarına göre ayrılmış ana modüller ve alt modüller.
+
 Her dosyanın ve klasörün detaylı açıklaması aşağıda listelenmiştir:
 
 ## guards/
@@ -24,3 +26,9 @@ Her dosyanın ve klasörün detaylı açıklaması aşağıda listelenmiştir:
 
 ## index.ts
 - Tüm core modüllerinin dışa aktarımı ve merkezi erişim noktası.
+
+## phases/
+- Proje fazlarına göre modüller burada yer alır. Örnek: Canlı ders, materyal yönetimi, quiz/test vb.
+
+### Canlı ders
+- Canlı ders modülü, video konferans ve ders yönetimi için temel bileşenleri içerir. `canli-ders.module.ts`, `canli-ders.ts`, `canli-ders.service.ts` dosyaları ile başlatılmıştır.
